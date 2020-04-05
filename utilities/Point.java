@@ -2,8 +2,8 @@ package utilities;
 
 public class Point {
 
-    final double x;
-    final double y;
+   private final double x;
+    private final double y;
 
     public Point(double x, double y) {
         if (x>=0 && x<=1000000) this.x = x;
@@ -12,7 +12,7 @@ public class Point {
         else this.y=0;
 
     }
-
+    //getters
     public double getX() {
         return x;
     }
