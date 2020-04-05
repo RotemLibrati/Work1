@@ -2,6 +2,7 @@ package components;
 import utilities.Point;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 public class Junction {
     private String junctionName;
@@ -36,26 +37,45 @@ public class Junction {
     public void changeLight(){
         /*make the next entering road in the list green (open) and
         all the others (exiting only) red (closed).*/
-
+        ListIterator<Road> it1=enteringRoads.listIterator();
+        ListIterator<Road> it2=exitingRoads.listIterator();
+        int i=0;
+        while(it1.hasNext()){
+            if(!it1.next().getIsOpen()){
+                enteringRoads.get(i).setIsOpen(true);
+                break;
+            }
+            i++;
+        }
+        i=0;
+        while(it2.hasNext()){
+            exitingRoads.get(i).setIsOpen(false);
+            i++;
+        }
     }
 
     public boolean checkAvailabilty(Road r){
         /*for vehicle that arrived to the junction
         from road r, checks if there are some other vehicles on the roads with
         a higher traffic priority on the junction.*/
+        //TODO: check if traffic priority related to location in allowedVehicles arraylist
 
     }
 
     public String toString(){
-        return String.valueOf("name")+location.toString();
+        return getClass().getName()+'@'+Integer.toHexString(hashCode());
     }
 
-    public boolean equals(Object o){
-        if (o==this)
-            return true;
-        if (!(o instanceof Junction))
-            return false;
-        Junction j = (Junction)o;
-        return junctionName==j.junctionName && location.equals(o);
+    public boolean equals(Object other){
+        if (other instanceof Junction){
+            return junctionName==((Junction)other).junctionName &&
+                    location.equals(((Junction) other).location) &&
+                    enteringRoads==((Junction)other).enteringRoads &&
+                    exitingRoads==((Junction)other).exitingRoads &&
+                    hasLights==((Junction)other).hasLights &&
+                    delay==((Junction)other).delay &&
+                    vehicles==((Junction)other).vehicles;
+        }
+        return false;
     }
 }
