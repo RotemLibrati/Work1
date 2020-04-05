@@ -1,7 +1,8 @@
 package utilities;
 
 public class Point {
-    private final double x;
+
+   private final double x;
     private final double y;
 
     public Point(double x, double y) {
@@ -9,6 +10,7 @@ public class Point {
         else this.x = 0;
         if (y >= 0 && y <= 800) this.y = y;
         else this.y = 0;
+
     }
 
     //getters
@@ -16,9 +18,8 @@ public class Point {
         return x;
     }
 
-    public double getY() {
-        return y;
-    }
+    public double getY() { return y; }
+
 
     public String toString() {
         return getClass().getName() + '@' + Integer.toHexString(hashCode());
