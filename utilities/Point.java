@@ -1,6 +1,7 @@
 package utilities;
 
 public class Point {
+
     final double x;
     final double y;
 
@@ -9,12 +10,15 @@ public class Point {
         else this.x=0;
         if (y>=0 && y<=800) this.y = y;
         else this.y=0;
+
     }
 
     public double getX() {
         return x;
     }
+
     public double getY() { return y; }
+
     public String toString(){
         return String.valueOf('(' +   x + ',' + y + ')');
     }
