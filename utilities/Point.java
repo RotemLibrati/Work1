@@ -34,9 +34,4 @@ public class Point {
         Point p = (Point)o;
         return Double.compare(x,p.x) == 0 && Double.compare(y,p.y) == 0;
     }
-
-    public static void main(String[] args) {
-        Point p = new Point(3,4);
-        p.getY();
-    }
 }
