@@ -32,8 +32,8 @@ public class Route {
     //setters
     public void setJunctions(ArrayList<Junction> junctions) { this.junctions = junctions; }
     public void setRoads(ArrayList<Road> roads) { this.roads = roads; }
-    public void setDelay(double delay) { this.delay = delay; }
-    public void setVehicleType(String vehicleType) { this.vehicleType = vehicleType; }
+    public void setDelay(final double delay) { this.delay = delay; }
+    public void setVehicleType(final String vehicleType) { this.vehicleType = vehicleType; }
 
     //public Junction getStart() { return }
     public double calcDelay() {
