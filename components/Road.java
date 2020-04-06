@@ -37,6 +37,7 @@ public class Road {
     }
 
     public Road(Junction from, Junction to, ArrayList<String> allowed, boolean open, boolean enabled) {
+        //TODO:Fix objects implementation:from,to
         fromJunc = from;
         toJunc = to;
         allowedVehicles = allowed;
