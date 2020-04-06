@@ -54,13 +54,13 @@ public class Junction {
         }
     }
 
-    public boolean checkAvailabilty(Road r){
-        /*for vehicle that arrived to the junction
-        from road r, checks if there are some other vehicles on the roads with
-        a higher traffic priority on the junction.*/
-        //TODO: check if traffic priority related to location in allowedVehicles arraylist
-
-    }
+//    public boolean checkAvailabilty(Road r){
+//        /*for vehicle that arrived to the junction
+//        from road r, checks if there are some other vehicles on the roads with
+//        a higher traffic priority on the junction.*/
+//        //TODO: check if traffic priority related to location in allowedVehicles arraylist
+//
+//    }
 
     public String toString(){
         return getClass().getName()+'@'+Integer.toHexString(hashCode());
