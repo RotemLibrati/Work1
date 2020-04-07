@@ -11,8 +11,10 @@ public class Route {
     private String vehicleType;
 
     public Route(ArrayList<Junction> juncs, ArrayList<Road> roads, String vehType) {
-        this.junctions = juncs;
-        this.roads = roads;
+        this.junctions = new ArrayList<>();
+        this.junctions.addAll(juncs);
+        this.roads = new ArrayList<>();
+        this.roads.addAll(roads);
         this.vehicleType = vehType;
         this.delay = 0;
         this.vehicleType = null;
@@ -30,7 +32,7 @@ public class Route {
     public String getVehicleType() { return vehicleType; }
 
     //setters
-    public void setJunctions(ArrayList<Junction> junctions) { this.junctions = junctions; }
+    public void setJunctions(ArrayList<Junction> junctions) { this.junctions.addAll(junctions); }
     public void setRoads(ArrayList<Road> roads) { this.roads = roads; }
     public void setDelay(final double delay) { this.delay = delay; }
     public void setVehicleType(final String vehicleType) { this.vehicleType = vehicleType; }
