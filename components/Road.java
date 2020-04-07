@@ -22,7 +22,7 @@ public class Road {
           class and sets the values of allowedVehicles, isOpen and isEnabled
           randomly. Sets the length value to the calculated one*/
         String[] vehicleTypes = new String[]{"Ambulance", "Police", "Bus", "Private", "FireTruck", "Truck", "MotorCycle"};
-        allowedVehicles = new ArrayList<>();
+        allowedVehicles = new ArrayList<String>();
         Random rand = new Random();
         //Random 5 values from the vehicleTypes array and put then into allowedVehicles
         for (int i = 0; i < 5; i++) {

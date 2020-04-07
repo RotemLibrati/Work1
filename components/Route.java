@@ -3,10 +3,8 @@ package components;
 import java.util.ArrayList;
 
 public class Route {
-    private ArrayList<Junction> junctions; //list of junctions on the
-    // route by the order of movement.
-    private ArrayList<Road> roads;// list of roads on the route by the
-    //order of movement.
+    private ArrayList<Junction> junctions; //list of junctions on the route by the order of movement.
+    private ArrayList<Road> roads;// list of roads on the route by the order of movement.
     private double delay; // time that will take vehicle to make this route.
     private String vehicleType;
 
@@ -19,11 +17,13 @@ public class Route {
         this.delay = 0;
         this.vehicleType = null;
     }
-    //not implemented in this task
-//    public Route(Junction start, Junction end, String vehType);
-//    {
-//
-//    }
+
+    /*not implemented in this task
+    public Route(Junction start, Junction end, String vehType);
+    {
+
+    }*/
+
     //TODO : they dont write if we need getters and setters.. check and remove if we dont need.
     //getters
     public ArrayList<Junction> getJunctions() { return junctions;}
@@ -36,9 +36,19 @@ public class Route {
     public void setRoads(ArrayList<Road> roads) { this.roads = roads; }
     public void setDelay(final double delay) { this.delay = delay; }
     public void setVehicleType(final String vehicleType) { this.vehicleType = vehicleType; }
+    public Junction getStart() { return junctions.get(0);}
+    public Junction getEnd() { return junctions.get(junctions.size()-1);}
 
-    //public Junction getStart() { return }
     public double calcDelay() {
+        /*set length to be a sum of delay values of all the junctions
+        *on the route //and the time that will take this type of vehicle to pass all
+        *the roads. Time is calculated by dividing the distance by min(average
+        *speed, maxSpeed). The delay time on junctions is calculated according
+        *to worse case: if there is a traffic lights on the junction, we use it’s
+        *delay value multiplied by (number of entering roads minus one). If
+        *there is no traffic lights on the junction, the delay time is the priority
+        *level of the road that leads us to this junction (the index of this road in
+        *the list of roads).*/
         double time = 0;
         int i = 0;
         while(i < roads.size()) {
