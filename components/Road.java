@@ -1,5 +1,7 @@
 package components;
 
+import utilities.Point;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -20,7 +22,7 @@ public class Road {
           class and sets the values of allowedVehicles, isOpen and isEnabled
           randomly. Sets the length value to the calculated one*/
         String[] vehicleTypes = new String[]{"Ambulance", "Police", "Bus", "Private", "FireTruck", "Truck", "MotorCycle"};
-        allowedVehicles = new ArrayList<String>();
+        allowedVehicles = new ArrayList<>();
         Random rand = new Random();
         //Random 5 values from the vehicleTypes array and put then into allowedVehicles
         for (int i = 0; i < 5; i++) {
@@ -37,10 +39,10 @@ public class Road {
     }
 
     public Road(Junction from, Junction to, ArrayList<String> allowed, boolean open, boolean enabled) {
-        //TODO:Fix objects implementation:from,to
-        fromJunc = from;
-        toJunc = to;
-        allowedVehicles = allowed;
+        fromJunc = new Junction(from.getJunctionName(),new Point(from.getLocation().getX(),from.getLocation().getY()));
+        toJunc = new Junction(to.getJunctionName(),new Point(to.getLocation().getX(),to.getLocation().getY()));
+        allowedVehicles = new ArrayList<String>();
+        allowedVehicles.addAll(allowed);
         isOpen = open;
         isEnabled = enabled;
         fromJunc = from;
@@ -88,7 +90,7 @@ public class Road {
     }
 
     public void setAllowedVehicles(ArrayList<String> allowed) {
-        allowedVehicles = allowed;
+        allowedVehicles.addAll(allowed);
     }
 
     public void setIsOpen(boolean isOpen) {

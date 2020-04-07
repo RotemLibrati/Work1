@@ -15,6 +15,9 @@ public class Junction {
 
     public Junction(String name,Point loc){
         junctionName=name;
+        enteringRoads=new ArrayList<>();
+        exitingRoads=new ArrayList<>();
+        vehicles=new ArrayList<>();
         location=new Point(loc.getX(),loc.getY());
     }
     //getters
@@ -28,11 +31,11 @@ public class Junction {
 
     //setters
     public void setJunctionName(final String junctionName){this.junctionName=junctionName;}
-    public void setEnteringRoads(final ArrayList<Road>enteringRoads){this.enteringRoads=enteringRoads;}
-    public void setExitingRoads(final ArrayList<Road>exitingRoads){this.exitingRoads=exitingRoads;}
+    public void setEnteringRoads(final ArrayList<Road>enteringRoads){this.enteringRoads.addAll(enteringRoads);}
+    public void setExitingRoads(final ArrayList<Road>exitingRoads){this.exitingRoads.addAll(exitingRoads);}
     public void setHasLights(final boolean hasLights){this.hasLights=hasLights;}
     public void setDelay(final int delay){this.delay=delay;}
-    public void setVehicles(final ArrayList<Road> vehicles){this.vehicles=vehicles;}
+    public void setVehicles(final ArrayList<Road> vehicles){this.vehicles.addAll(vehicles);}
 
     public void changeLight(){
         /*make the next entering road in the list green (open) and
