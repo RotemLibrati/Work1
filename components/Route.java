@@ -6,14 +6,14 @@ public class Route {
     private ArrayList<Junction> junctions; //list of junctions on the route by the order of movement.
     private ArrayList<Road> roads;// list of roads on the route by the order of movement.
     private double delay; // time that will take vehicle to make this route.
-    private String vehicleType;
+    private VehicleType vehicleType;
 
-    public Route(ArrayList<Junction> juncs, ArrayList<Road> roads, String vehType) {
+    public Route(ArrayList<Junction> juncs, ArrayList<Road> roads, VehicleType vehType) {
         this.junctions = new ArrayList<>();
         this.junctions.addAll(juncs);
         this.roads = new ArrayList<>();
         this.roads.addAll(roads);
-        this.vehicleType = vehType;
+        this.vehicleType = new VehicleType(vehType.getTypeName(),vehType.getSpeed());
         this.delay = 0;
         this.vehicleType = null;
     }
@@ -29,13 +29,13 @@ public class Route {
     public ArrayList<Junction> getJunctions() { return junctions;}
     public ArrayList<Road> getRoads() { return roads;}
     public double getDelay() { return delay; }
-    public String getVehicleType() { return vehicleType; }
+    public VehicleType getVehicleType() { return vehicleType; }
 
     //setters
     public void setJunctions(ArrayList<Junction> junctions) { this.junctions.addAll(junctions); }
     public void setRoads(ArrayList<Road> roads) { this.roads = roads; }
     public void setDelay(final double delay) { this.delay = delay; }
-    public void setVehicleType(final String vehicleType) { this.vehicleType = vehicleType; }
+    public void setVehicleType(final VehicleType vehicleType) { this.vehicleType = vehicleType; }
     public Junction getStart() { return junctions.get(0);}
     public Junction getEnd() { return junctions.get(junctions.size()-1);}
 

@@ -9,7 +9,7 @@ import java.util.Random;
 public class Road {
     private Junction fromJunc;
     private Junction toJunc;
-    private ArrayList<String> allowedVehicles;  // holds the list of vehicle types
+    private ArrayList<VehicleType> allowedVehicles;  // holds the list of vehicle types
     //that are allowed to move on the road.
     private boolean isOpen;  // True when the light is green.
     private boolean isEnabled; // appears on the map
@@ -22,11 +22,11 @@ public class Road {
           class and sets the values of allowedVehicles, isOpen and isEnabled
           randomly. Sets the length value to the calculated one*/
         String[] vehicleTypes = new String[]{"Ambulance", "Police", "Bus", "Private", "FireTruck", "Truck", "MotorCycle"};
-        allowedVehicles = new ArrayList<String>();
+        allowedVehicles = new ArrayList<VehicleType>();
         Random rand = new Random();
         //Random 5 values from the vehicleTypes array and put then into allowedVehicles
         for (int i = 0; i < 5; i++) {
-            allowedVehicles.add(vehicleTypes[rand.nextInt(vehicleTypes.length)]);
+            allowedVehicles.add(new VehicleType(vehicleTypes[rand.nextInt(vehicleTypes.length)],0));
         }
         //Random true/false
         isEnabled = rand.nextBoolean();
@@ -38,10 +38,10 @@ public class Road {
 
     }
 
-    public Road(Junction from, Junction to, ArrayList<String> allowed, boolean open, boolean enabled) {
+    public Road(Junction from, Junction to, ArrayList<VehicleType> allowed, boolean open, boolean enabled) {
         fromJunc = new Junction(from.getJunctionName(),new Point(from.getLocation().getX(),from.getLocation().getY()));
         toJunc = new Junction(to.getJunctionName(),new Point(to.getLocation().getX(),to.getLocation().getY()));
-        allowedVehicles = new ArrayList<String>();
+        allowedVehicles = new ArrayList<VehicleType>();
         allowedVehicles.addAll(allowed);
         isOpen = open;
         isEnabled = enabled;
@@ -60,7 +60,7 @@ public class Road {
         return toJunc;
     }
 
-    public ArrayList<String> getAllowedVehicles() {
+    public ArrayList<VehicleType> getAllowedVehicles() {
         return allowedVehicles;
     }
 
@@ -89,7 +89,7 @@ public class Road {
         toJunc = to;
     }
 
-    public void setAllowedVehicles(ArrayList<String> allowed) {
+    public void setAllowedVehicles(ArrayList<VehicleType> allowed) {
         allowedVehicles.addAll(allowed);
     }
 
@@ -111,7 +111,7 @@ public class Road {
 
     public void addVehicleType(String type) {
         //Function add new vehicle type to allowed vehicles ArrayList
-        allowedVehicles.add(type);
+        allowedVehicles.add(new VehicleType(type,0));
     }
 
     public double countLength() {

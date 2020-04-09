@@ -3,6 +3,7 @@ import utilities.Point;
 
 import java.util.ArrayList;
 import java.util.ListIterator;
+import java.util.Random;
 
 public class Junction {
     private String junctionName;
@@ -19,6 +20,8 @@ public class Junction {
         exitingRoads=new ArrayList<>();
         vehicles=new ArrayList<>();
         location=new Point(loc.getX(),loc.getY());
+        Random rand=new Random();
+        delay=rand.nextInt(10);
     }
     //getters
     public String getJunctionName(){return junctionName;}
@@ -63,7 +66,7 @@ public class Junction {
         if (vehicles.get(0)==r) return true;
         else{
          for(int i=0;i<vehicles.size() && r!=vehicles.get(i);i++){
-             if (vehicles.get(i).getIsOpen()!=true) return false;
+             if (!vehicles.get(i).getIsOpen()) return false;
          }
          return true;
         }
@@ -75,7 +78,7 @@ public class Junction {
 
     public boolean equals(Object other){
         if (other instanceof Junction){
-            return junctionName==((Junction)other).junctionName &&
+            return junctionName.equals(((Junction)other).junctionName) &&
                     location.equals(((Junction) other).location) &&
                     enteringRoads==((Junction)other).enteringRoads &&
                     exitingRoads==((Junction)other).exitingRoads &&
@@ -84,5 +87,11 @@ public class Junction {
                     vehicles==((Junction)other).vehicles;
         }
         return false;
+        /*for vehicle that arrived to the junction
+        from road r, checks if there are some other vehicles on the roads with
+        a higher traffic priority on the junction.*/
+        //TODO: check if traffic priority related to location in allowedVehicles arraylist
+
     }
+
 }
