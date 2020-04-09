@@ -60,7 +60,7 @@ public class Road {
         return toJunc;
     }
 
-    public ArrayList<VehicleType> getAllowedVehicles() {
+    public ArrayList<VehicleType> getAllowedVehicle() {
         return allowedVehicles;
     }
 

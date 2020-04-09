@@ -39,8 +39,13 @@ public class Junction {
     public void setHasLights(final boolean hasLights){this.hasLights=hasLights;}
     public void setDelay(final int delay){this.delay=delay;}
     public void setVehicles(final ArrayList<Road> vehicles){this.vehicles.addAll(vehicles);}
+    public void setLightsOn()
+    {
+        if (hasLights == false)
+            hasLights=true;
+    }
 
-    public void changeLight(){
+    public void changeLights(){ // Rotem change the name to changeLights according to running commends of Sofia.
         /*make the next entering road in the list green (open) and
         all the others (exiting only) red (closed).*/
         ListIterator<Road> it1=enteringRoads.listIterator();
