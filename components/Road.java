@@ -17,22 +17,29 @@ public class Road {
     private int maxSpeed;
 
 
+
     public Road(Junction from, Junction to) {
         /*creates an instance of the
           class and sets the values of allowedVehicles, isOpen and isEnabled
           randomly. Sets the length value to the calculated one*/
         Random rand = new Random();
+        //Set Vehicle Types array
+        VehicleType [] arr = {new VehicleType("bus", 60),new VehicleType("motorcycle", 120),new VehicleType("car", 90),
+                new VehicleType("truck", 80),new VehicleType("semitrailer",80),new VehicleType("bicycle",40),
+                new VehicleType("trum",50)};
+        int numOfVehicles=rand.nextInt(arr.length)+2;
+        for (int i=0;i<numOfVehicles;i++){
+            allowedVehicles.add(arr[rand.nextInt(arr.length)-1]);
+        }
         isEnabled = rand.nextBoolean();
         isOpen = rand.nextBoolean();
         fromJunc = from;
         toJunc = to;
         length = countLength();
-
+        maxSpeed=(rand.nextInt(12)+2)*10;//Set the value of max-speed between 20-120
     }
 
     public Road(Junction from, Junction to, ArrayList<VehicleType> allowed, boolean open, boolean enabled) {
-        fromJunc = new Junction(from.getJunctionName(),from.getLocation());
-        toJunc = new Junction(to.getJunctionName(),to.getLocation());
         allowedVehicles = new ArrayList<VehicleType>();
         allowedVehicles.addAll(allowed);
         isOpen = open;
@@ -41,9 +48,9 @@ public class Road {
         toJunc = to;
         length = countLength();
         Random rand = new Random();
-        int[] Speed = new int[]  {50,60,70,80,90,100,120};//Randomal values for maxSpeed variable
-        int max = rand.nextInt(7);
-        maxSpeed = Speed[max];
+        maxSpeed=(rand.nextInt(12)+2)*10;//Set the value of max-speed between 20-120
+        fromJunc.setEnteringRoad(this);
+        toJunc.setExitingRoad(this);
     }
 
     //getters
@@ -104,9 +111,9 @@ public class Road {
         this.maxSpeed = maxSpeed;
     }
 
-    public void addVehicleType(String type) {
+    public void addVehicleType(VehicleType type) {
         //Function add new vehicle type to allowed vehicles ArrayList
-        allowedVehicles.add(new VehicleType(type,0));
+        allowedVehicles.add(type);
     }
 
     public double countLength() {

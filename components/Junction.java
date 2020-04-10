@@ -33,6 +33,8 @@ public class Junction {
     public ArrayList<Road> getVehicles(){return vehicles;}
 
     //setters
+    public void setExitingRoad(final Road exit){exitingRoads.add(exit);}
+    public void setEnteringRoad(final Road enter){enteringRoads.add(enter);}
     public void setJunctionName(final String junctionName){this.junctionName=junctionName;}
     public void setEnteringRoads(final ArrayList<Road>enteringRoads){this.enteringRoads.addAll(enteringRoads);}
     public void setExitingRoads(final ArrayList<Road>exitingRoads){this.exitingRoads.addAll(exitingRoads);}
