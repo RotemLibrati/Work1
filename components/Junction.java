@@ -17,8 +17,8 @@ public class Junction {
     public Junction(String name,Point loc){
         junctionName=name;
         enteringRoads=new ArrayList<Road>();
-        Random rand = new Random();
         exitingRoads=new ArrayList<Road>();
+        Random rand = new Random();
         vehicles=new ArrayList<>();
         location=loc;
         delay=rand.nextInt(10);
@@ -63,6 +63,7 @@ public class Junction {
         i=0;
         while(it2.hasNext()){
             exitingRoads.get(i).setIsOpen(false);
+            it2.next();
             i++;
         }
     }
