@@ -19,12 +19,8 @@ public class Route {
     }
 
     /*not implemented in this task
-    public Route(Junction start, Junction end, String vehType);
-    {
+    public Route(Junction start, Junction end, String vehType){}*/
 
-    }*/
-
-    //TODO : they dont write if we need getters and setters.. check and remove if we dont need.
     //getters
     public ArrayList<Junction> getJunctions() { return junctions;}
     public ArrayList<Road> getRoads() { return roads;}
@@ -36,6 +32,8 @@ public class Route {
     public void setRoads(ArrayList<Road> roads) { this.roads = roads; }
     public void setDelay(final double delay) { this.delay = delay; }
     public void setVehicleType(final VehicleType vehicleType) { this.vehicleType = vehicleType; }
+
+    //get Start&End
     public Junction getStart() { return junctions.get(0);}
     public Junction getEnd() { return junctions.get(junctions.size()-1);}
 
@@ -52,7 +50,7 @@ public class Route {
         double time = 0;
         int i = 0;
         while(i < roads.size()) {
-            time += roads.get(i).getLength() / roads.get(i).getMaxSpeed();// the distance of the roads dividing max speed in roads.
+            time += roads.get(i).getLength() / roads.get(i).getMaxSpeed();// the distance of the roads divide by the max speed in roads.
             i++;
         }
         while (i < junctions.size()) {
