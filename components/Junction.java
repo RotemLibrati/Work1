@@ -43,7 +43,7 @@ public class Junction {
         for(Road r:enteringRoads) {
             if(r.equals(enter)) return;
         }
-        exitingRoads.add(enter);
+        enteringRoads.add(enter);
     }
     public void setJunctionName(final String junctionName){this.junctionName=junctionName;}
     public void setEnteringRoads(final ArrayList<Road>enteringRoads){this.enteringRoads.addAll(enteringRoads);}

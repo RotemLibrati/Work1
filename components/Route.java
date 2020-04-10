@@ -1,5 +1,7 @@
 package components;
 
+import utilities.Point;
+
 import java.util.ArrayList;
 
 public class Route {
@@ -16,6 +18,11 @@ public class Route {
         this.vehicleType = new VehicleType(vehType.getTypeName(),vehType.getSpeed());
         this.delay = 0;
         this.vehicleType = null;
+    }
+    public Route(Junction junc, VehicleType vehicle)  // this constructor for TestRoute - only for checking !!!!!
+    {
+        junc = new Junction("2", new Point(555,666));
+        vehicle = new VehicleType("bus", 80);
     }
 
     /*not implemented in this task
@@ -64,5 +71,11 @@ public class Route {
 //            }
         }
         return time;
+    }
+
+    public void printRoute()
+    {
+        for(int i=0; i<junctions.size(); i++)
+            System.out.println(junctions.get(i));
     }
 }
