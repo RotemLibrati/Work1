@@ -30,7 +30,6 @@ public class JunctionTest {
             int j=new Random().nextInt(arr.length);
             int k=new Random().nextInt(arr.length);
             if (!arr[j].equals(arr[k])) {
-                //TODO: i wait to answer from Sofia because we dont have object of VehicleType in this class and we dont call to func of VehicleType.
                 arrR[i]=new Road(arr[j],arr[k], VehicleType.getRandomVehicleTypes(), false,true);
                 System.out.println(arrR[i].toString() + " has been created");
             }

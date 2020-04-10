@@ -21,20 +21,12 @@ public class Road {
         /*creates an instance of the
           class and sets the values of allowedVehicles, isOpen and isEnabled
           randomly. Sets the length value to the calculated one*/
-        String[] vehicleTypes = new String[]{"Ambulance", "Police", "Bus", "Private", "FireTruck", "Truck", "MotorCycle"};
-        allowedVehicles = new ArrayList<VehicleType>();
         Random rand = new Random();
-        //Random 5 values from the vehicleTypes array and put then into allowedVehicles
-        for (int i = 0; i < 5; i++) {
-            allowedVehicles.add(new VehicleType(vehicleTypes[rand.nextInt(vehicleTypes.length)],0));
-        }
-        //Random true/false
         isEnabled = rand.nextBoolean();
         isOpen = rand.nextBoolean();
         fromJunc = from;
         toJunc = to;
         length = countLength();
-        maxSpeed = 0;
 
     }
 
@@ -48,7 +40,10 @@ public class Road {
         fromJunc = from;
         toJunc = to;
         length = countLength();
-        maxSpeed = 0;
+        Random rand = new Random();
+        int[] Speed = new int[]  {50,60,70,80,90,100,120};//max speed in road for random from this list
+        int max = rand.nextInt(7);
+        maxSpeed = Speed[max];
     }
 
     //getters
@@ -121,7 +116,7 @@ public class Road {
     }
 
     public String toString() {
-        return getClass().getName() + '@' + Integer.toHexString(hashCode());
+        return "Road from " +  fromJunc.getJunctionName() + " to " + toJunc.getJunctionName();
     }
 
     public boolean equals(Object other) {

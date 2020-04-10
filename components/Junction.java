@@ -16,12 +16,12 @@ public class Junction {
 
     public Junction(String name,Point loc){
         junctionName=name;
-        enteringRoads=new ArrayList<>();
-        exitingRoads=new ArrayList<>();
+        enteringRoads=new ArrayList<Road>();
+        Random rand = new Random();
+        exitingRoads=new ArrayList<Road>();
         vehicles=new ArrayList<>();
         location=new Point(loc.getX(),loc.getY());
-        Random rand=new Random();
-        delay=rand.nextInt(10);
+        delay=rand.nextInt(5);
     }
     //getters
     public String getJunctionName(){return junctionName;}
@@ -45,7 +45,7 @@ public class Junction {
             hasLights=true;
     }
 
-    public void changeLights(){ // Rotem change the name to changeLights according to running commends of Sofia.
+    public void changeLights(){
         /*make the next entering road in the list green (open) and
         all the others (exiting only) red (closed).*/
         ListIterator<Road> it1=enteringRoads.listIterator();
@@ -78,7 +78,8 @@ public class Junction {
     }
 
     public String toString(){
-        return getClass().getName()+'@'+Integer.toHexString(hashCode());
+
+        return  "Junction " + getJunctionName()  ;
     }
 
     public boolean equals(Object other){
