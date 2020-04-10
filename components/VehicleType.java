@@ -41,7 +41,7 @@ public class VehicleType {
         ArrayList<VehicleType> allowedVehicles;
         allowedVehicles = new ArrayList<VehicleType>();
         Random random = new Random();
-        int length = random.nextInt(7);
+        int length = random.nextInt(7)+2;
         for( int i=0;i<length; i++) {
             boolean flag0=true,flag1=true,flag2=true,flag3=true,flag4=true,flag5=true, flag6=true;
             Random rand = new Random();

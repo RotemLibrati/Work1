@@ -26,10 +26,10 @@ public class Road {
         //Set Vehicle Types array
         VehicleType [] arr = {new VehicleType("bus", 60),new VehicleType("motorcycle", 120),new VehicleType("car", 90),
                 new VehicleType("truck", 80),new VehicleType("semitrailer",80),new VehicleType("bicycle",40),
-                new VehicleType("trum",50)};
+                new VehicleType("tram",50)};
         int numOfVehicles=rand.nextInt(arr.length)+2;
         for (int i=0;i<numOfVehicles;i++){
-            allowedVehicles.add(arr[rand.nextInt(arr.length)-1]);
+            allowedVehicles.add(arr[rand.nextInt(arr.length)]);
         }
         isEnabled = rand.nextBoolean();
         isOpen = rand.nextBoolean();
