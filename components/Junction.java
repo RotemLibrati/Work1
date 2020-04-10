@@ -20,8 +20,8 @@ public class Junction {
         Random rand = new Random();
         exitingRoads=new ArrayList<Road>();
         vehicles=new ArrayList<>();
-        location=new Point(loc.getX(),loc.getY());
-        delay=rand.nextInt(5);
+        location=loc;
+        delay=rand.nextInt(10);
     }
     //getters
     public String getJunctionName(){return junctionName;}

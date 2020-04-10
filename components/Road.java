@@ -31,8 +31,8 @@ public class Road {
     }
 
     public Road(Junction from, Junction to, ArrayList<VehicleType> allowed, boolean open, boolean enabled) {
-        fromJunc = new Junction(from.getJunctionName(),new Point(from.getLocation().getX(),from.getLocation().getY()));
-        toJunc = new Junction(to.getJunctionName(),new Point(to.getLocation().getX(),to.getLocation().getY()));
+        fromJunc = new Junction(from.getJunctionName(),from.getLocation());
+        toJunc = new Junction(to.getJunctionName(),to.getLocation());
         allowedVehicles = new ArrayList<VehicleType>();
         allowedVehicles.addAll(allowed);
         isOpen = open;
@@ -41,7 +41,7 @@ public class Road {
         toJunc = to;
         length = countLength();
         Random rand = new Random();
-        int[] Speed = new int[]  {50,60,70,80,90,100,120};//max speed in road for random from this list
+        int[] Speed = new int[]  {50,60,70,80,90,100,120};//Randomal values for maxSpeed variable
         int max = rand.nextInt(7);
         maxSpeed = Speed[max];
     }
