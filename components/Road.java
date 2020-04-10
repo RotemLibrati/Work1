@@ -28,6 +28,7 @@ public class Road {
                 new VehicleType("truck", 80),new VehicleType("semitrailer",80),new VehicleType("bicycle",40),
                 new VehicleType("tram",50)};
         int numOfVehicles=rand.nextInt(arr.length)+2;
+        allowedVehicles=new ArrayList<>();
         for (int i=0;i<numOfVehicles;i++){
             allowedVehicles.add(arr[rand.nextInt(arr.length)]);
         }
@@ -41,6 +42,7 @@ public class Road {
         from.setExitingRoad(this);
         fromJunc = from;
         toJunc = to;
+        System.out.println(this.toString() + " has been created");
     }
 
     public Road(Junction from, Junction to, ArrayList<VehicleType> allowed, boolean open, boolean enabled) {

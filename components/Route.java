@@ -3,6 +3,7 @@ package components;
 import utilities.Point;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Route {
     private ArrayList<Junction> junctions; //list of junctions on the route by the order of movement.
@@ -16,13 +17,17 @@ public class Route {
         this.roads = new ArrayList<>();
         this.roads.addAll(roads);
         this.vehicleType = new VehicleType(vehType.getTypeName(),vehType.getSpeed());
-        this.delay = 0;
-        this.vehicleType = null;
+        Random r=new Random();
+        this.delay = r.nextInt(11)+1;
     }
     public Route(Junction junc, VehicleType vehicle)  // this constructor for TestRoute - only for checking !!!!!
     {
-        junc = new Junction("2", new Point(555,666));
-        vehicle = new VehicleType("bus", 80);
+        this.junctions = new ArrayList<>();
+        this.junctions.add(junc);
+        this.roads = new ArrayList<>();
+        this.vehicleType = new VehicleType(vehicle.getTypeName(),vehicle.getSpeed());
+        this.delay = 0;
+        this.vehicleType = vehicle;
     }
 
     /*not implemented in this task

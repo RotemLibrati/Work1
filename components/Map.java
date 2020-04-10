@@ -13,53 +13,72 @@ public class Map {
 
     public  Map(int number)// new constructor for TestRoute
     {
-        Junction [] arr = new Junction[number];
+        roads=new ArrayList<>();
+        junctions=new ArrayList<>();
         for (int i=0;i<number;i++) {
-            arr[i]=(new Junction(Integer.toString(i), new Point(Point.getRandomDoubleBetweenRange(1, 1000000), Point.getRandomDoubleBetweenRange(1, 800))));
+            junctions.add(new Junction(Integer.toString(i), new Point(Point.getRandomDoubleBetweenRange(1, 1000000), Point.getRandomDoubleBetweenRange(1, 800))));
+            System.out.println(junctions.get(i).getLocation().toString()+" has been created");
+            System.out.println(junctions.get(i).toString()+" has been created");
         }
         for(int i=0;i<number;i++) {
             for (int j = 0; j < number; j++) {
-                roads.add(new Road(junctions.get(i), junctions.get(j)));
+                if (i != j) {
+                    roads.add(new Road(junctions.get(i), junctions.get(j)));
+                }
             }
         }
     }
-    public Map(){
+    public Map() {
         // create a map with 20 random junctions and connect
         // all of them one to another with roads.
-        for (int i=0;i<20;i++){
-            junctions.add(new Junction(Integer.toString(i),new Point(Point.getRandomDoubleBetweenRange(1,1000000),Point.getRandomDoubleBetweenRange(1,800))));
+        roads = new ArrayList<>();
+        junctions = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            junctions.add(new Junction(Integer.toString(i), new Point(Point.getRandomDoubleBetweenRange(1, 1000000), Point.getRandomDoubleBetweenRange(1, 800))));
         }
-        for(int i=0;i<20;i++){
-            for(int j=0;j<20;j++){
-                roads.add(new Road(junctions.get(i),junctions.get(j)));
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
+                if (i != j) {
+                    roads.add(new Road(junctions.get(i), junctions.get(j)));
+                }
             }
         }
     }
 
     public Map(int junctions, int roads){
     //Creates a random map with given quantity of junctions and roads.
+        this.roads=new ArrayList<>();
+        this.junctions=new ArrayList<>();
         for (int i=0;i<junctions;i++){
             this.junctions.add(new Junction(Integer.toString(i),new Point(Point.getRandomDoubleBetweenRange(1,1000000),Point.getRandomDoubleBetweenRange(1,800))));
         }
         for(int i=0;i<junctions;i++){
             for(int j=0;j<roads;j++){
-                this.roads.add(new Road(this.junctions.get(i),this.junctions.get(j)));
+                if (i!=j) {
+                    this.roads.add(new Road(this.junctions.get(i), this.junctions.get(j)));
+                }
             }
         }
     }
 
     public Map (ArrayList<Junction> juncs) {
-    //Creates a map with given junctions and connects all of them with roads.
+        //Creates a map with given junctions and connects all of them with roads.
+        roads = new ArrayList<>();
+        junctions = new ArrayList<>();
         junctions.addAll(juncs);
-        for(int i=0;i<junctions.size();i++){
-            for(int j=0;j<junctions.size();j++){
-                roads.add(new Road(junctions.get(i),junctions.get(j)));
+        for (int i = 0; i < junctions.size(); i++) {
+            for (int j = 0; j < junctions.size(); j++) {
+                if (i != j) {
+                    roads.add(new Road(junctions.get(i), junctions.get(j)));
+                }
             }
         }
     }
 
     public Map (ArrayList<Junction>juncs, ArrayList<Road>roads) {
     //Creates a map with given junctions and roads.
+        this.roads=new ArrayList<>();
+        junctions=new ArrayList<>();
         junctions.addAll(juncs);
         this.roads.addAll(roads);
     }
@@ -93,5 +112,8 @@ public class Map {
 
     public ArrayList<Junction> getJunctions() {
         return junctions;
+    }
+    public ArrayList<Road> getRoads() {
+        return roads;
     }
 }

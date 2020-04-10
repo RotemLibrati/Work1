@@ -21,7 +21,7 @@ public class Point {
             setY(newY);
             System.out.println("The value " + y + " is illegal forY, therefore has been replaced with " + newY );
         }
-            System.out.println("Point ("+ this.x + " , " + this.y + ") " + "has been created");
+            System.out.println(this.toString() + " has been created");
     }
     //getters
     public double getX() {
@@ -45,7 +45,7 @@ public class Point {
     }
 
     public String toString(){
-        return  "("+ getX() + " , "+ getY() + ")";
+        return  "Point ("+ getX() + " , "+ getY() + ")";
     }
     public boolean equals(Object other) {
         if (other instanceof Point) {

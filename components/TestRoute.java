@@ -23,6 +23,7 @@ public class TestRoute {
         Map map=new Map(5);
 
         Route route=new Route(map.getJunctions().get(0), VehicleType.getRandomVehicleTypes().get(0) );
+        //Route route=new Route(map.getJunctions(),map.getRoads(), VehicleType.getRandomVehicleTypes().get(0) );
         System.out.println(route.getJunctions());
         route.printRoute();
         System.out.println("Start: "+route.getStart()+", End: "+route.getEnd());
