@@ -43,8 +43,8 @@ public class Junction {
     public void setVehicles(final ArrayList<Road> vehicles){this.vehicles.addAll(vehicles);}
     public void setLightsOn()
     {
-        if (hasLights == false)
-            hasLights=true;
+        if (!hasLights) hasLights=true;
+        System.out.println(this.toString()+": "+ "traffic lights: ON. Delay time: "+delay);
     }
 
     public void changeLights(){
@@ -56,6 +56,7 @@ public class Junction {
         while(it1.hasNext()){
             if(!it1.next().getIsOpen()){
                 enteringRoads.get(i).setIsOpen(true);
+                System.out.println(enteringRoads.get(i).toString()+": green light");
                 break;
             }
             i++;
