@@ -26,7 +26,7 @@ public class Driving
     public int getNumOfJuncs(){return numOfJuncs;}
     public int getNumOfVehicles(){return numOfVehicles;}
     public Map getCurrentMap(){return currentMap;}
-    public ArrayList<Vehicle> getCurrentVehicles(){return currentVehicles;}
+    public ArrayList<Vehicle> getVehicles(){return currentVehicles;}
     public double getDrivingTime(){return drivingTime;}
     public int getMaxTime(){return maxTime;}
 
@@ -42,12 +42,28 @@ public class Driving
     public void setMaxTime(int max){maxTime=max;}
 
     public void addMap(){
+        //creates a map with random (10-25) junctions quantity
         Random rand=new Random();
-        numOfJuncs=rand.nextInt(26)+10;
         currentMap=new Map(numOfJuncs);
     }
 
-    public void addVehicels(){
+    public void addVehicles(){
+    //creates random number (2-8) of vehicles of different types.
+        VehicleType [] arr = {new VehicleType("bus", 60),new VehicleType("motorcycle", 120),new VehicleType("car", 90),
+                new VehicleType("truck", 80),new VehicleType("semitrailer",80),new VehicleType("bicycle",40),
+                new VehicleType("tram",50),new VehicleType("ambulance",100)};
+        Random r=new Random();
+        currentVehicles=new ArrayList<>();
+        for(int i=0;i<numOfVehicles;i++){
+            VehicleType t = arr[r.nextInt(8)];
+            while(currentVehicles.contains(t)) {
+                t=arr[r.nextInt(8)];
+                }
+            currentVehicles.add(new Vehicle(i,t,currentMap.getJunctions().get(r.nextInt(currentMap.getJunctions().size()-1))));
+        }
+    }
+
+    public void startDrive(int maxTime){
 
     }
 }

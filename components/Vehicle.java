@@ -2,7 +2,7 @@ package components;
 
 public class Vehicle {
     private int id;
-    private String type;
+    private VehicleType type;
     private int speed;  //average speed for this type of vehicle.
     private Route currentRoute;
     private Junction lastJunction; //current junction or last junction where the vehicle visited
@@ -10,7 +10,7 @@ public class Vehicle {
     private boolean movesNow; //True if the vehicle is on the road between the junctions.
     private double spentTime;  //time passed from the beginning of movement on the route.
 
-    public Vehicle(int id,String type, Junction lastJunction){
+    public Vehicle(int id,VehicleType type, Junction lastJunction){
         this.id=id;
         this.type=type;
         this.lastJunction=lastJunction;
@@ -18,7 +18,7 @@ public class Vehicle {
 
     //getters
     public int getID(){return id;}
-    public String getType(){return type;}
+    public VehicleType getType(){return type;}
     public int getSpeed(){return speed;}
     public Route getCurrentRoute(){return currentRoute;}
     public Junction getLastJunction(){return lastJunction;}
@@ -28,7 +28,7 @@ public class Vehicle {
 
     //setters
     public void setID(final int id){this.id=id;}
-    public void setType(final String type){this.type=type;}
+    public void setType(final VehicleType type){this.type=type;}
     public void setSpeed(final int speed){this.speed=speed;}
     public void setCurrentRoute(final Route currentRoute){this.currentRoute=currentRoute;}
     public void setLastJunction(final Junction lastJunction){this.lastJunction=lastJunction;}

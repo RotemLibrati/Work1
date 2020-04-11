@@ -1,13 +1,25 @@
-//Yehonatan Hen-207630112
-//Rotem Librati-
-
+/**
+ * 
+ */
 package utilities;
 
-import components.VehicleType;
+import game.Driving;
 
+/**
+ * @author krsof
+ *
+ */
 public class Program {
-    public static void main(String[] args) {
-        Point p = new Point(3,4);
-        System.out.println(p.toString());
-    }
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+
+		Driving driving=new Driving(10, 40, 8);
+		driving.startDrive(8);
+	}
+	
+
+
 }

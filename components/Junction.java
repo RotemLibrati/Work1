@@ -22,6 +22,8 @@ public class Junction {
         vehicles=new ArrayList<>();
         location=loc;
         delay=rand.nextInt(10);
+        System.out.println(location.toString()+" has been created.");
+        System.out.println(toString()+" has been created.");
     }
     //getters
     public String getJunctionName(){return junctionName;}

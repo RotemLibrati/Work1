@@ -18,15 +18,16 @@ public class Map {
         junctions=new ArrayList<>();
         for (int i=0;i<number;i++) {
             junctions.add(new Junction(Integer.toString(i), new Point(Point.getRandomDoubleBetweenRange(1, 1000000), Point.getRandomDoubleBetweenRange(1, 800))));
-            System.out.println(junctions.get(i).getLocation().toString()+" has been created");
-            System.out.println(junctions.get(i).toString()+" has been created");
         }
         for(int i=0;i<number;i++) {
             for (int j = 0; j < number; j++) {
                 if (i != j) {
                     roads.add(new Road(junctions.get(i), junctions.get(j)));
-                    roads.get(i).getFromJunc().setLightsOn();
-                    System.out.println("Road from " + i + " to " + j);
+                    System.out.println("Road from " + i + " to " + j+ " has been created.");
+                    /*if(!junctions.get(j).getEnteringRoads().get(i).getIsEnabled()) {
+                        junctions.get(j).setLightsOn();
+                    }*/
+                    //TODO:Check how light set is work and implement.
                 }
             }
         }
@@ -105,12 +106,17 @@ public class Map {
             if (junction.equals(junc)) return;
         }
         junctions.add(junc);
+        System.out.println(junc.toString()+" has been added to the map.");
     }
     public void removeJunction(Junction junc){
+        boolean flag=false;
         for(Junction junction : junctions){
-            if(junction.equals(junc)) return;
+            if(junction.equals(junc)) flag=true;
         }
-        junctions.remove(junc);
+        if(flag) {
+            junctions.remove(junc);
+            System.out.println(junc.toString()+" has been removed from the map.");
+        }
     }
 
     public ArrayList<Junction> getJunctions() {
