@@ -39,7 +39,12 @@ public class Vehicle {
     public void move(){
     /* wait for the current point delay time and move to the next
     point of the route.*/
-    //TODO:Implement this by which points? point meaning can be point on the road or only point of jucntion?
+    int i=0;
+    while(lastJunction.equals(currentRoute.getJunctions().get(i))){
+            i++;
+        }
+    i++;
+    lastJunction=currentRoute.getJunctions().get(i);
     }
 
     public void status() {
@@ -61,6 +66,7 @@ public class Vehicle {
     public void checkIn(){
      /*if arrived to a junction, update the junction waiting list
       and calculate the delay time before the next move.*/
-     //TODO:Implement this function
+     lastJunction.getVehicles().add(lastRoad);
+     lastJunction.setDelay((int)currentRoute.calcDelay());
     }
 }

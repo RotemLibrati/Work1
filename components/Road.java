@@ -101,6 +101,7 @@ public class Road {
     }
 
     public void setAllowedVehicles(ArrayList<VehicleType> allowed) {
+        allowedVehicles.clear();
         allowedVehicles.addAll(allowed);
     }
 

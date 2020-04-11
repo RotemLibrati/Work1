@@ -11,7 +11,8 @@ public class Map {
     private ArrayList<Road> roads;
 
 
-    public  Map(int number)// new constructor for TestRoute
+    public  Map(int number)// new constructor that receive number of junctions and connect between them with roads
+            //NOTE: This contructor is'nt part of the demanded constructors, However, it is a consequence of Test&Driving class demands
     {
         roads=new ArrayList<>();
         junctions=new ArrayList<>();
