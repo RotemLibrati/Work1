@@ -89,6 +89,7 @@ public class Road {
     public int getMaxSpeed() {
         return maxSpeed;
     }
+    public int getEnteringRoads() {return toJunc.sizeOfEnteringRoads();}
 
     //setters
     public void setFromJunc(Junction from) {

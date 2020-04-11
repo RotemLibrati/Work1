@@ -31,6 +31,7 @@ public class Junction {
     public boolean getHasLights(){return hasLights;}
     public int getDelay(){return delay;}
     public ArrayList<Road> getVehicles(){return vehicles;}
+    public int sizeOfEnteringRoads(){return enteringRoads.size();}
 
     //setters
     public void setExitingRoad(final Road exit){

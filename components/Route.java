@@ -62,16 +62,23 @@ public class Route {
         double time = 0;
         int i = 0;
         while(i < roads.size()) {
-            time += roads.get(i).getLength() / roads.get(i).getMaxSpeed();// the distance of the roads divide by the max speed in roads.
+            time += roads.get(i).getLength() / Math.min(roads.get(i).getMaxSpeed(),vehicleType.getSpeed());// the distance of the roads divide by the max speed in roads.
             i++;
         }
+        i=0;
         while (i < junctions.size()) {
             if (junctions.get(i).getHasLights()) {
-                time += junctions.get(i).getDelay() * (roads.size() - 1); //check if has traffic light in junction and calc time according formula .
+                time += junctions.get(i).getDelay() * (junctions.get(i).sizeOfEnteringRoads()-1); //check if has traffic light in junction and calc time according formula .
                 i++;
+            }
+            else
+            {
+                i++;
+                continue;
             }
             //TODO: check how calc which road get priority and complete the else according to this.
 //            else {
+//                if(junctions.get(i)==junctions.get(i).getExitingRoads())
 //
 //            }
         }

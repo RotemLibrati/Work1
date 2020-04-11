@@ -24,6 +24,8 @@ public class Map {
             for (int j = 0; j < number; j++) {
                 if (i != j) {
                     roads.add(new Road(junctions.get(i), junctions.get(j)));
+                    roads.get(i).getFromJunc().setLightsOn();
+                    System.out.println("Road from " + i + " to " + j);
                 }
             }
         }

@@ -27,6 +27,7 @@ public class TestRoute {
         System.out.println(route.getJunctions());
         route.printRoute();
         System.out.println("Start: "+route.getStart()+", End: "+route.getEnd());
+        //System.out.println("calc" + route.calcDelay());
 
     }
 
