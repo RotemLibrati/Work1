@@ -19,6 +19,7 @@ public class Driving
         numOfVehicles=vehicles;
         this.maxTime=maxTime;
         currentVehicles=new ArrayList<>();
+        addMap();
         drivingTime=0;
     }
 

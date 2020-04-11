@@ -69,4 +69,8 @@ public class Vehicle {
      lastJunction.getVehicles().add(lastRoad);
      lastJunction.setDelay((int)currentRoute.calcDelay());
     }
+
+    public String toString(){
+        return type.toString()+ ",  ID: "+id;
+    }
 }
