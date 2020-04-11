@@ -51,7 +51,7 @@ public class Route {
 
     public double calcDelay() {
         /*set length to be a sum of delay values of all the junctions
-        *on the route //and the time that will take this type of vehicle to pass all
+        *on the route and the time that will take this type of vehicle to pass all
         *the roads. Time is calculated by dividing the distance by min(average
         *speed, maxSpeed). The delay time on junctions is calculated according
         *to worse case: if there is a traffic lights on the junction, we use it’s
@@ -59,30 +59,33 @@ public class Route {
         *there is no traffic lights on the junction, the delay time is the priority
         *level of the road that leads us to this junction (the index of this road in
         *the list of roads).*/
-        double time = 0;
+        double length=0;
         int i = 0;
         while(i < roads.size()) {
-            time += roads.get(i).getLength() / Math.min(roads.get(i).getMaxSpeed(),vehicleType.getSpeed());// the distance of the roads divide by the max speed in roads.
+            length += roads.get(i).getLength() / Math.min(roads.get(i).getMaxSpeed(),vehicleType.getSpeed());// the distance of the roads divide by the max speed in roads.
             i++;
         }
         i=0;
         while (i < junctions.size()) {
             if (junctions.get(i).getHasLights()) {
-                time += junctions.get(i).getDelay() * (junctions.get(i).sizeOfEnteringRoads()-1); //check if has traffic light in junction and calc time according formula .
-                i++;
+                length += junctions.get(i).getDelay() * (junctions.get(i).sizeOfEnteringRoads() - 1); //check if has traffic light in junction and calc time according formula .
             }
-            else
-            {
-                i++;
-                continue;
+            else {
+                //if there are no traffic lights in junctions
+                for(int j=0;j<roads.size();j++){
+                    int sum=0;
+                    for(int k=0;k<junctions.get(i).getEnteringRoads().size();k++){
+                        sum+=junctions.get(i).getEnteringRoads().get(k).getToJunc().getVehicles().size();
+                        if (junctions.get(i).getEnteringRoads().get(k).equals(roads.get(j))){
+                            length+=sum;
+                            break;
+                        }
+                    }
+                }
             }
-            //TODO: check how calc which road get priority and complete the else according to this.
-//            else {
-//                if(junctions.get(i)==junctions.get(i).getExitingRoads())
-//
-//            }
+            i++;
         }
-        return time;
+        return length;
     }
 
     public void printRoute()
