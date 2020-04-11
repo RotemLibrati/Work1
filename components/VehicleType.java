@@ -76,4 +76,5 @@ public class VehicleType {
         }
         return allowedVehicles;
     }
+
 }

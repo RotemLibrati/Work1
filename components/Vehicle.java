@@ -73,4 +73,17 @@ public class Vehicle {
     public String toString(){
         return type.toString()+ ",  ID: "+id;
     }
+
+    public boolean equals(Object other){
+        if (other instanceof Vehicle){
+            return id==((Vehicle)other).id &&
+                type.equals(((Vehicle)other).type) &&
+                    currentRoute.equals(((Vehicle)other).currentRoute) &&
+                    lastJunction.equals(((Vehicle)other).lastJunction) &&
+                    lastRoad.equals(((Vehicle)other).lastRoad) &&
+                    ((Vehicle)other).movesNow==movesNow &&
+                    ((Vehicle)other).spentTime==spentTime;
+        }
+        return false;
+    }
 }
