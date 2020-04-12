@@ -20,6 +20,7 @@ public class Driving
         this.maxTime=maxTime;
         currentVehicles=new ArrayList<>();
         currentMap=new Map(numOfJuncs);
+        addVehicles();
         drivingTime=0;
     }
 
@@ -61,7 +62,7 @@ public class Driving
             while(currentVehicles.contains(t)) {
                 t=arr[r.nextInt(8)];
                 }
-            currentVehicles.add(new Vehicle(i,t,currentMap.getJunctions().get(r.nextInt(currentMap.getJunctions().size()-1))));
+            currentVehicles.add(new Vehicle(i,t,currentMap.getJunctions().get(r.nextInt(currentMap.getJunctions().size()))));
         }
         for(int i=0;i<currentVehicles.size();i++) {
             System.out.println(currentVehicles.get(i) + " has been created and placed at " + currentVehicles.get(i).getLastJunction());
