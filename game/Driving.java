@@ -1,5 +1,6 @@
 package game;
 import  components.*;
+import utilities.Point;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -59,13 +60,33 @@ public class Driving
         currentVehicles=new ArrayList<>();
         for(int i=0;i<numOfVehicles;i++){
             VehicleType t = arr[r.nextInt(8)];
-            while(currentVehicles.contains(t)) {
-                t=arr[r.nextInt(8)];
-                }
             currentVehicles.add(new Vehicle(i,t,currentMap.getJunctions().get(r.nextInt(currentMap.getJunctions().size()))));
         }
         for(int i=0;i<currentVehicles.size();i++) {
             System.out.println(currentVehicles.get(i) + " has been created and placed at " + currentVehicles.get(i).getLastJunction());
+        }
+        //make routes for created vehicles.route finish in junction without exit roads or route include 10 junctions and 9 roads
+        for(int i=0;i<numOfVehicles;i++){
+            int start=r.nextInt(numOfJuncs);
+            //check if start junction has exiting roads
+            while(currentMap.getJunctions().get(start).getExitingRoads().size()==0) {
+                start=r.nextInt((numOfJuncs));
+            }
+            ArrayList<Road> tempRoads=new ArrayList<>();
+            ArrayList<Junction> tempJunctions=new ArrayList<>();
+            //make first junction
+            currentVehicles.get(i).getCurrentRoute().getJunctions().add(currentMap.getJunctions().get(start));
+            int j=start;
+            while((currentMap.getJunctions().get(j).getExitingRoads().size()==0) ||
+                (currentVehicles.get(i).getCurrentRoute().getJunctions().size()>=10 && currentVehicles.get(i).getCurrentRoute().getRoads().size()>=9)){
+                j=r.nextInt(currentMap.getJunctions().size());
+                tempJunctions.add(currentMap.getJunctions().get(j));
+                Junction lastJunc=currentVehicles.get(i).getLastJunction();
+                ///////
+                tempRoads.add(new Road(lastJunc,currentMap.getJunctions().get(j)));
+
+            }
+            currentVehicles.get(i).setCurrentRoute(new Route(tempJunctions,tempRoads,currentVehicles.get(i).getType()));
         }
     }
 

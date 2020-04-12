@@ -40,13 +40,11 @@ public class Vehicle {
     public void move() {
     /* wait for the current point delay time and move to the next
     point of the route.*/
-      /* wait for the current point delay time and move to the next
-    point of the route.*/
         int i=0;
-        while(!lastJunction.equals(currentRoute.getJunctions().get(i))){
+        while(lastJunction.equals(currentRoute.getJunctions().get(i))){
             i++;
         }
-        //System.out.println(toString()+ " is starting route from "+currentRoute.getJunctions().get(i-1)+ " to "+ lastJunction);
+        System.out.println(toString()+ " is starting route from "+currentRoute.getJunctions().get(i)+ " to "+ lastJunction);
         lastJunction=currentRoute.getJunctions().get(i);
     }
 

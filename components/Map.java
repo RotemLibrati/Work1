@@ -29,7 +29,6 @@ public class Map {
                         junctions.get(randJunc).setLightsOn();
                         junctions.get(randJunc).changeLights();
                     }
-                    //TODO:Check why road from is always 0
                 }
             }
         }

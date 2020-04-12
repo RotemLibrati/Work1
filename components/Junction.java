@@ -19,6 +19,7 @@ public class Junction {
         enteringRoads=new ArrayList<Road>();
         exitingRoads=new ArrayList<Road>();
         Random rand = new Random();
+        hasLights=rand.nextBoolean();
         vehicles=new ArrayList<>();
         location=loc;
         delay=rand.nextInt(10);
@@ -84,7 +85,7 @@ public class Junction {
         }
     }
 
-    public boolean checkAviilabilty(Road r){
+    public boolean checkAvailabilty(Road r){
         /*for vehicle that arrived to the junction from road r, checks if there
          are some other vehicles on the roads with a higher traffic priority on the junction.*/
         if (vehicles.get(0)==r) return true;
