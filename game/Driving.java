@@ -62,6 +62,9 @@ public class Driving
                 }
             currentVehicles.add(new Vehicle(i,t,currentMap.getJunctions().get(r.nextInt(currentMap.getJunctions().size()-1))));
         }
+        for(int i=0;i<currentVehicles.size();i++) {
+            System.out.println(currentVehicles.get(i) + " has been created and placed at " + currentVehicles.get(i).getLastJunction());
+        }
     }
 
     public void startDrive(int maxTime){

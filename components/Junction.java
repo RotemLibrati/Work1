@@ -84,7 +84,7 @@ public class Junction {
         }
     }
 
-    public boolean checkAvailabilty(Road r){
+    public boolean checkAviilabilty(Road r){
         /*for vehicle that arrived to the junction from road r, checks if there
          are some other vehicles on the roads with a higher traffic priority on the junction.*/
         if (vehicles.get(0)==r) return true;

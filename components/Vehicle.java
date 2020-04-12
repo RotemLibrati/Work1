@@ -36,15 +36,10 @@ public class Vehicle {
     public void setMovesNow(final boolean movesNow){this.movesNow=movesNow;}
     public void setSpentTime(final double spentTime){this.spentTime=spentTime;}
 
-    public void move(){
+    public void move() {
     /* wait for the current point delay time and move to the next
     point of the route.*/
-    int i=0;
-    while(lastJunction.equals(currentRoute.getJunctions().get(i))){
-            i++;
-        }
-    i++;
-    lastJunction=currentRoute.getJunctions().get(i);
+
     }
 
     public void status() {
