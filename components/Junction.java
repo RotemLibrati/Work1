@@ -11,7 +11,7 @@ public class Junction {
     private ArrayList<Road> enteringRoads;  // holds the list of the roads that enter to the junction.
     private ArrayList<Road> exitingRoads;   // holds the list of the roads that exit the junction.
     private boolean hasLights;  // checks if the junction has traffic lights.
-    private int delay;  // delay time in seconds
+    private double delay;  // delay time in seconds
     private ArrayList<Road> vehicles;  //list of entering roads with cars waiting on the junction
 
     public Junction(String name,Point loc){
@@ -32,7 +32,7 @@ public class Junction {
     public ArrayList<Road> getEnteringRoads(){return enteringRoads;}
     public ArrayList<Road> getExitingRoads(){return exitingRoads;}
     public boolean getHasLights(){return hasLights;}
-    public int getDelay(){return delay;}
+    public double getDelay(){return delay;}
     public ArrayList<Road> getVehicles(){return vehicles;}
     public int sizeOfEnteringRoads(){return enteringRoads.size();}
 
@@ -53,7 +53,7 @@ public class Junction {
     public void setEnteringRoads(final ArrayList<Road>enteringRoads){this.enteringRoads.addAll(enteringRoads);}
     public void setExitingRoads(final ArrayList<Road>exitingRoads){this.exitingRoads.addAll(exitingRoads);}
     public void setHasLights(final boolean hasLights){this.hasLights=hasLights;}
-    public void setDelay(final int delay){this.delay=delay;}
+    public void setDelay(final double delay){this.delay=delay;}
     public void setVehicles(final ArrayList<Road> vehicles){this.vehicles.addAll(vehicles);}
     public void setLightsOn()
     {

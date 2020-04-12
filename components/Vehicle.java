@@ -13,6 +13,7 @@ public class Vehicle {
     public Vehicle(int id,VehicleType type, Junction lastJunction){
         this.id=id;
         this.type=type;
+        speed=type.getSpeed();
         this.lastJunction=lastJunction;
         currentRoute=new Route(this.lastJunction,this.type);
     }
@@ -45,7 +46,11 @@ public class Vehicle {
             i++;
         }
         System.out.println(toString()+ " is starting route from "+currentRoute.getJunctions().get(i)+ " to "+ lastJunction);
+        System.out.println(toString()+" has left "+ lastJunction);
         lastJunction=currentRoute.getJunctions().get(i);
+        checkIn();
+        System.out.println(toString()+" is moving on road from "+ currentRoute.getRoads().get(i)+ " Delay time:"+ lastJunction.getDelay());
+
     }
 
     public void status() {
@@ -68,7 +73,8 @@ public class Vehicle {
      /*if arrived to a junction, update the junction waiting list
       and calculate the delay time before the next move.*/
      lastJunction.getVehicles().add(lastRoad);
-     lastJunction.setDelay((int)currentRoute.calcDelay());
+     lastJunction.setDelay(currentRoute.calcDelay());
+        //System.out.println(toString()+" is moving on road from "+ + " Delay time:"+ lastJunction.getDelay());
     }
 
     public String toString(){
