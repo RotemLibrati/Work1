@@ -19,7 +19,7 @@ public class Driving
         numOfJuncs=juncs;
         numOfVehicles=vehicles;
         this.maxTime=maxTime;
-        currentVehicles=new ArrayList<>();
+        //currentVehicles=new ArrayList<>();
         currentMap=new Map(numOfJuncs);
         addVehicles();
         drivingTime=0;
@@ -78,7 +78,7 @@ public class Driving
             currentVehicles.get(i).getCurrentRoute().getJunctions().add(currentMap.getJunctions().get(start));
             int j=start;
             while((currentMap.getJunctions().get(j).getExitingRoads().size()==0) ||
-                (currentVehicles.get(i).getCurrentRoute().getJunctions().size()>=10 && currentVehicles.get(i).getCurrentRoute().getRoads().size()>=9)){
+                (tempJunctions.size()<10 && tempRoads.size()<9)){
                 j=r.nextInt(currentMap.getJunctions().size());
                 tempJunctions.add(currentMap.getJunctions().get(j));
                 Junction lastJunc=currentVehicles.get(i).getLastJunction();
@@ -86,7 +86,9 @@ public class Driving
                 tempRoads.add(new Road(lastJunc,currentMap.getJunctions().get(j)));
 
             }
-            currentVehicles.get(i).setCurrentRoute(new Route(tempJunctions,tempRoads,currentVehicles.get(i).getType()));
+            System.out.println(tempJunctions);
+            Route route=new Route(tempJunctions,tempRoads,currentVehicles.get(i).getType());
+            currentVehicles.get(i).setCurrentRoute(route);
         }
     }
 
