@@ -46,9 +46,7 @@ public class Vehicle {
         while(!lastJunction.equals(currentRoute.getJunctions().get(i))){
             i++;
         }
-        i++;
         lastJunction=currentRoute.getJunctions().get(i);
-
     }
 
     public void status() {
