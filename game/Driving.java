@@ -83,10 +83,18 @@ public class Driving
                 tempJunctions.add(currentMap.getJunctions().get(j));
                 Junction lastJunc=currentVehicles.get(i).getLastJunction();
                 ///////
-                tempRoads.add(new Road(lastJunc,currentMap.getJunctions().get(j)));
+                for(int k=0;k<currentMap.getRoads().size();k++){
+                    if(currentMap.getRoads().get(k).getFromJunc()==lastJunc){
+                        for(int z=0;z<currentMap.getJunctions().size();z++){
+                            if(currentMap.getJunctions().get(j)==currentMap.getRoads().get(k).getToJunc()){
+                                tempRoads.add(currentMap.getRoads().get(k));
+                                break;
+                            }
+                        }
+                    }
+                }
 
             }
-            System.out.println(tempJunctions);
             Route route=new Route(tempJunctions,tempRoads,currentVehicles.get(i).getType());
             currentVehicles.get(i).setCurrentRoute(route);
         }
