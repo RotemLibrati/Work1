@@ -14,6 +14,7 @@ public class Vehicle {
         this.id=id;
         this.type=type;
         this.lastJunction=lastJunction;
+        currentRoute=new Route(this.lastJunction,this.type);
     }
 
     //getters
@@ -39,6 +40,14 @@ public class Vehicle {
     public void move() {
     /* wait for the current point delay time and move to the next
     point of the route.*/
+      /* wait for the current point delay time and move to the next
+    point of the route.*/
+        int i=0;
+        while(!lastJunction.equals(currentRoute.getJunctions().get(i))){
+            i++;
+        }
+        i++;
+        lastJunction=currentRoute.getJunctions().get(i);
 
     }
 

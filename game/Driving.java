@@ -19,7 +19,7 @@ public class Driving
         numOfVehicles=vehicles;
         this.maxTime=maxTime;
         currentVehicles=new ArrayList<>();
-        addMap();
+        currentMap=new Map(numOfJuncs);
         drivingTime=0;
     }
 
@@ -45,6 +45,7 @@ public class Driving
     public void addMap(){
         //creates a map with random (10-25) junctions quantity
         Random rand=new Random();
+        numOfJuncs=rand.nextInt(26)+10;
         currentMap=new Map(numOfJuncs);
     }
 
