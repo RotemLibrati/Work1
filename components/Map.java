@@ -20,15 +20,14 @@ public class Map {
             junctions.add(new Junction(Integer.toString(i), new Point(Point.getRandomDoubleBetweenRange(1, 1000000), Point.getRandomDoubleBetweenRange(1, 800))));
         }
         for(int i=0;i<number;i++) {
-            for (int j = 0,k=0; j < number; j++) {
+            for (int j = 0; j < number; j++) {
                 if (i != j) {
                     roads.add(new Road(junctions.get(i), junctions.get(j)));
-                    System.out.println("Road from " + i + " to " + j+ " has been created.");
-                    /*if(!junctions.get(i).getEnteringRoads().get(k).getIsEnabled()) {
+                    /*if(!junctions.get(i).getEnteringRoads().get(j).getIsOpen()) {
                         junctions.get(i).setLightsOn();
-                        k++;
                     }*/
                     //TODO:Check how light set is work and implement.
+                    //TODO: after we made the implementation successfully, copy the structure to the other contructor
                 }
             }
         }
