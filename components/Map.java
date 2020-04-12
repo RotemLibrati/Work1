@@ -14,24 +14,27 @@ public class Map {
     public  Map(int number)// new constructor that receive number of junctions and connect between them with roads
             //NOTE: This contructor is'nt part of the demanded constructors, However, it is a consequence of Test&Driving class demands
     {
-        roads=new ArrayList<>();
-        junctions=new ArrayList<>();
-        for (int i=0;i<number;i++) {
+        roads = new ArrayList<>();
+        junctions = new ArrayList<>();
+        for (int i = 0; i < number; i++) {
             junctions.add(new Junction(Integer.toString(i), new Point(Point.getRandomDoubleBetweenRange(1, 1000000), Point.getRandomDoubleBetweenRange(1, 800))));
         }
-        for(int i=0;i<number;i++) {
+        for (int i = 0; i < number; i++) {
+            Random rand = new Random();
+            int randJunc = rand.nextInt(number);
             for (int j = 0; j < number; j++) {
                 if (i != j) {
                     roads.add(new Road(junctions.get(i), junctions.get(j)));
-                    /*if(!junctions.get(i).getEnteringRoads().get(j).getIsOpen()) {
-                        junctions.get(i).setLightsOn();
-                    }*/
-                    //TODO:Check how light set is work and implement.
-                    //TODO: after we made the implementation successfully, copy the structure to the other contructor
+                    if (randJunc == j) {
+                        junctions.get(randJunc).setLightsOn();
+                        junctions.get(randJunc).changeLights();
+                    }
+                    //TODO:Check why road from is always 0
                 }
             }
         }
     }
+
     public Map() {
         // create a map with 20 random junctions and connect
         // all of them one to another with roads.

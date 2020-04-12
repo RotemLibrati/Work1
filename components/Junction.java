@@ -56,8 +56,10 @@ public class Junction {
     public void setVehicles(final ArrayList<Road> vehicles){this.vehicles.addAll(vehicles);}
     public void setLightsOn()
     {
-        if (!hasLights) hasLights=true;
-        System.out.println(this.toString()+": "+ "traffic lights: ON. Delay time: "+delay);
+        if (!hasLights) {
+            hasLights = true;
+            System.out.println(this.toString() + ": " + "traffic lights: ON. Delay time: " + delay);
+        }
     }
 
     public void changeLights(){
