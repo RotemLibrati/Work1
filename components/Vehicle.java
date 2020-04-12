@@ -46,6 +46,7 @@ public class Vehicle {
         while(!lastJunction.equals(currentRoute.getJunctions().get(i))){
             i++;
         }
+        //System.out.println(toString()+ " is starting route from "+currentRoute.getJunctions().get(i-1)+ " to "+ lastJunction);
         lastJunction=currentRoute.getJunctions().get(i);
     }
 
