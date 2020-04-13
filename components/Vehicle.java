@@ -1,6 +1,7 @@
 package components;
 
 import java.util.ArrayList;
+import java.util.TooManyListenersException;
 
 public class Vehicle {
     private int id;
@@ -55,26 +56,25 @@ public class Vehicle {
         }
         System.out.println(toString()+ " is starting route from "+currentRoute.getJunctions().get(i)+ " to "+ lastJunction);
         lastRoad=new Road(currentRoute.getJunctions().get(i),lastJunction);
+        checkIn();
         if(!currentRoute.getJunctions().get(i).getHasLights())
             System.out.println(toString() + " is waiting for green light at Junction " + currentRoute.getJunctions().get(i).getJunctionName());
-        checkIn();
+        else if(currentRoute.getJunctions().get(i).getExitingRoads().size()==0)
+            System.out.println(toString()+" stays at "+ currentRoute.getJunctions().get(i).toString()+" - no exiting roads.");
+        else{
+            double d=currentRoute.calcDelay();
+            spentTime+=d;
+            System.out.println(toString()+" is moving on "+lastRoad.toString()+" Delay time:"+ d);
+        }
+
 
     }
 
     public void status() {
     /*prints the details about the vehicle including current
     position, time spent on the route and the first and last junctions on the route*/
-        System.out.println("Vehicle details:\nID:" + id + "\nType:" + type);
-        System.out.println("Time spent:" + spentTime);
-        if (currentRoute.getJunctions().size() > 0) {
-            System.out.println("First junction on the route:" + currentRoute.getJunctions().get(0));
-            if (currentRoute.getJunctions().size()>1) {
-                System.out.println("Last junction on the route:" +
-                        currentRoute.getJunctions().get(currentRoute.getJunctions().size() - 1));
-            }
-            else System.out.println("There are only one junction on the route");
-        }
-        else System.out.println("There are no junctions on the route");
+        System.out.println(toString()+" Position: "+lastJunction+" current Route: from"+ currentRoute.getStart()+
+                " to "+ currentRoute.getEnd()+ " Time spent:"+ this.getSpentTime());
     }
 
     public void checkIn(){

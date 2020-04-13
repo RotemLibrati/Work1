@@ -49,8 +49,6 @@ public class Road {
         allowedVehicles.addAll(allowed);
         isOpen = open;
         isEnabled = enabled;
-        fromJunc = from;
-        toJunc = to;
         length = countLength();
         Random rand = new Random();
         maxSpeed=(rand.nextInt(12)+2)*10;//Set the value of max-speed between 20-120

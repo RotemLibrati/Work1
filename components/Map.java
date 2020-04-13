@@ -17,19 +17,23 @@ public class Map {
         roads = new ArrayList<>();
         junctions = new ArrayList<>();
         for (int i = 0; i < number; i++) {
-            junctions.add(new Junction(Integer.toString(i), new Point(Point.getRandomDoubleBetweenRange(1, 1000000), Point.getRandomDoubleBetweenRange(1, 800))));
+            addJunction(new Junction(Integer.toString(i), new Point(Point.getRandomDoubleBetweenRange(1, 1000000), Point.getRandomDoubleBetweenRange(1, 800))));
         }
         for (int i = 0; i < number; i++) {
             Random rand = new Random();
-            int randJunc = rand.nextInt(number);
             for (int j = 0; j < number; j++) {
                 if (i != j) {
-                    roads.add(new Road(junctions.get(i), junctions.get(j)));
-                    System.out.println(roads.get(roads.size()-1) + " has been created");
-                    if (randJunc == j) {
+                    int randJunc = rand.nextInt(number);
+                    Road tempRoad=new Road(junctions.get(i), junctions.get(j));
+                    System.out.println(tempRoad + " has been created");
+                    //Add road only if he is enabled (appears in the map)
+                    if(tempRoad.getIsEnabled()) {
+                        addRoad(tempRoad);
+                    }
+                    if (randJunc==j) {
                         junctions.get(randJunc).setLightsOn();
                         junctions.get(randJunc).changeLights();
-                        System.out.println(roads.get(roads.size()-1).toString()+": green light");
+                        System.out.println(roads.get(roads.size() - 1).toString() + ": green light");
                     }
                 }
             }

@@ -66,7 +66,6 @@ public class Junction {
     public void changeLights(){
         /*make the next entering road in the list green (open) and
         all the others (exiting only) red (closed).*/
-        ListIterator<Road> it1=enteringRoads.listIterator();
         ListIterator<Road> it2=exitingRoads.listIterator();
         int i=0;
         for(;i<enteringRoads.size();i++) {
