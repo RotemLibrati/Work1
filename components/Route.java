@@ -63,34 +63,24 @@ public class Route {
         *level of the road that leads us to this junction (the index of this road in
         *the list of roads).*/
         double length=0;
-        int i = 0;
-        while(i < roads.size()) {
-            length += roads.get(i).getLength() / Math.min(roads.get(i).getMaxSpeed(),vehicleType.getSpeed());// the distance of the roads divide by the max speed in roads.
-            i++;
-        }
-        i=0;
-        while (i < junctions.size()) {
-            //check if has traffic light in junction and calc time according formula .
-            if (!junctions.get(i).getHasLights()) {
-                length += junctions.get(i).getDelay() * (junctions.get(i).sizeOfEnteringRoads() - 1);
-            }
-            else {
-                //if there are no traffic lights in junctions
-                for(int j=0;j<roads.size();j++){
-                    int sum=0;
-                    for(int k=0;k<junctions.get(i).getEnteringRoads().size();k++){
-                        sum+=junctions.get(i).getEnteringRoads().get(k).getToJunc().getVehicles().size();
-                        if (junctions.get(i).getEnteringRoads().get(k).equals(roads.get(j))){
-                            length+=sum;
-                            break;
-                        }
+        double maxSpeed=0;
+        for(int i=0;i<junctions.size();i++) {
+            if (junctions.get(i).getHasLights()) {
+                length += (junctions.get(i).getDelay()) * (junctions.get(i).getEnteringRoads().size() - 1);
+            } else {
+                for (int j = 0; j < roads.size(); j++) {
+                    if (maxSpeed < roads.get(j).getMaxSpeed()) maxSpeed = roads.get(j).getMaxSpeed();
+                    if (roads.get(j).getToJunc() == junctions.get(i)) {
+                        length += j;
                     }
                 }
             }
-            i++;
         }
-        delay=length;
-        return length;
+        for(int i=0;i<roads.size();i++){
+            if(maxSpeed<roads.get(i).getMaxSpeed()) maxSpeed=roads.get(i).getMaxSpeed();
+            }
+        delay=length/(Math.min(vehicleType.speed,maxSpeed));
+        return delay;
     }
 
     public void printRoute()

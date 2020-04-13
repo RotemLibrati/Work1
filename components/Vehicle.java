@@ -66,12 +66,8 @@ public class Vehicle {
         else if(currentRoute.getJunctions().get(i).getExitingRoads().size()==0)
             System.out.println(toString()+" stays at "+ currentRoute.getJunctions().get(i).toString()+" - no exiting roads.");
         else{
-            //double d=currentRoute.calcDelay();
-            //spentTime+=d;
-            System.out.println(toString()+" is moving on "+lastRoad.toString()+" Delay time:"+ String.format("%8f",currentRoute.getDelay()));
+            System.out.println(toString()+" is moving on "+lastRoad.toString()+" Delay time:"+ String.format("%8f",lastJunction.getDelay()));
         }
-
-
     }
 
     public void status() {
@@ -85,7 +81,7 @@ public class Vehicle {
      /*if arrived to a junction, update the junction waiting list
       and calculate the delay time before the next move.*/
      lastJunction.getVehicles().add(lastRoad);
-     spentTime+=currentRoute.calcDelay();
+     spentTime=currentRoute.calcDelay();
      lastJunction.setDelay(spentTime);
     }
 
