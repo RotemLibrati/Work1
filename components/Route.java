@@ -67,7 +67,7 @@ public class Route {
         }
         i=0;
         while (i < junctions.size()) {
-            if (junctions.get(i).getHasLights()) {
+            if (!junctions.get(i).getHasLights()) {
                 length += junctions.get(i).getDelay() * (junctions.get(i).sizeOfEnteringRoads() - 1); //check if has traffic light in junction and calc time according formula .
             }
             else {
