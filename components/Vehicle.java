@@ -1,5 +1,9 @@
+/*Yehonatan Hen-207630112
+ * Rotem Librati-
+ */
 package components;
 
+import javax.swing.text.Style;
 import java.util.ArrayList;
 import java.util.TooManyListenersException;
 
@@ -62,9 +66,9 @@ public class Vehicle {
         else if(currentRoute.getJunctions().get(i).getExitingRoads().size()==0)
             System.out.println(toString()+" stays at "+ currentRoute.getJunctions().get(i).toString()+" - no exiting roads.");
         else{
-            double d=currentRoute.calcDelay();
-            spentTime+=d;
-            System.out.println(toString()+" is moving on "+lastRoad.toString()+" Delay time:"+ d);
+            //double d=currentRoute.calcDelay();
+            //spentTime+=d;
+            System.out.println(toString()+" is moving on "+lastRoad.toString()+" Delay time:"+ String.format("%8f",currentRoute.getDelay()));
         }
 
 
@@ -74,15 +78,15 @@ public class Vehicle {
     /*prints the details about the vehicle including current
     position, time spent on the route and the first and last junctions on the route*/
         System.out.println(toString()+" Position: "+lastJunction+" current Route: from"+ currentRoute.getStart()+
-                " to "+ currentRoute.getEnd()+ " Time spent:"+ this.getSpentTime());
+                " to "+ currentRoute.getEnd()+ " Time spent:"+ String.format("%8f",this.getSpentTime()));
     }
 
     public void checkIn(){
      /*if arrived to a junction, update the junction waiting list
       and calculate the delay time before the next move.*/
      lastJunction.getVehicles().add(lastRoad);
-     lastJunction.setDelay(currentRoute.calcDelay());
-        //System.out.println(toString()+" is moving on road from "+ + " Delay time:"+ lastJunction.getDelay());
+     spentTime+=currentRoute.calcDelay();
+     lastJunction.setDelay(spentTime);
     }
 
     public String toString(){

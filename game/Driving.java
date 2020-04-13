@@ -1,3 +1,6 @@
+/*Yehonatan Hen-207630112
+ * Rotem Librati-
+ */
 package game;
 import  components.*;
 import utilities.Point;

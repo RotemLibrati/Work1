@@ -1,3 +1,7 @@
+/*Yehonatan Hen-207630112
+* Rotem Librati-
+ */
+
 package components;
 import utilities.Point;
 

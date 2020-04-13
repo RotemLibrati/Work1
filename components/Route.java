@@ -1,3 +1,6 @@
+/*Yehonatan Hen-207630112
+ * Rotem Librati-
+ */
 package components;
 
 import utilities.Point;
@@ -67,8 +70,9 @@ public class Route {
         }
         i=0;
         while (i < junctions.size()) {
+            //check if has traffic light in junction and calc time according formula .
             if (!junctions.get(i).getHasLights()) {
-                length += junctions.get(i).getDelay() * (junctions.get(i).sizeOfEnteringRoads() - 1); //check if has traffic light in junction and calc time according formula .
+                length += junctions.get(i).getDelay() * (junctions.get(i).sizeOfEnteringRoads() - 1);
             }
             else {
                 //if there are no traffic lights in junctions
@@ -85,6 +89,7 @@ public class Route {
             }
             i++;
         }
+        delay=length;
         return length;
     }
 

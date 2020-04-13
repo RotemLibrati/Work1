@@ -1,3 +1,6 @@
+/*Yehonatan Hen-207630112
+ * Rotem Librati-
+ */
 package components;
 
 import utilities.Point;
@@ -125,7 +128,7 @@ public class Road {
 
     public double countLength() {
         //calculates the length of the road using the coordinates of its junctions
-        return Math.sqrt(Math.pow(fromJunc.getLocation().getX() - toJunc.getLocation().getX(), 2) -
+        return Math.sqrt(Math.pow(fromJunc.getLocation().getX() - toJunc.getLocation().getX(), 2) +
                 Math.pow(fromJunc.getLocation().getY() - toJunc.getLocation().getY(), 2));
     }
 
