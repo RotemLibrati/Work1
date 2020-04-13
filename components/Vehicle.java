@@ -46,11 +46,15 @@ public class Vehicle {
             i++;
         }
         System.out.println(toString()+ " is starting route from "+currentRoute.getJunctions().get(i)+ " to "+ lastJunction);
-        System.out.println(toString()+" has left "+ lastJunction);
-        lastJunction=currentRoute.getJunctions().get(i);
-        checkIn();
-        System.out.println(toString()+" is moving on road from "+ currentRoute.getRoads().get(i)+ " Delay time:"+ lastJunction.getDelay());
+        /*if(lastJunction.checkAvailabilty(lastRoad)){
+            System.out.println(toString()+" has left "+ lastJunction);
+            lastJunction=currentRoute.getJunctions().get(i);
+            checkIn();
+            System.out.println(toString()+" is moving on road from "+ currentRoute.getRoads().get(i)+ " Delay time:"+ lastJunction.getDelay());
+        }
+        else{
 
+        }*/
     }
 
     public void status() {
