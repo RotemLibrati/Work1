@@ -28,6 +28,7 @@ public class Map {
                     if (randJunc == j) {
                         junctions.get(randJunc).setLightsOn();
                         junctions.get(randJunc).changeLights();
+                        System.out.println(roads.get(roads.size()-1).toString()+": green light");
                     }
                 }
             }

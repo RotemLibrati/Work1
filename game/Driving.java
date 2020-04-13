@@ -82,7 +82,6 @@ public class Driving
                 j=r.nextInt(currentMap.getJunctions().size());
                 tempJunctions.add(currentMap.getJunctions().get(j));
                 Junction lastJunc=currentVehicles.get(i).getLastJunction();
-                ///////
                 for(int k=0;k<currentMap.getRoads().size();k++){
                     if(currentMap.getRoads().get(k).getFromJunc()==lastJunc){
                         for(int z=0;z<currentMap.getJunctions().size();z++){
@@ -101,6 +100,11 @@ public class Driving
     }
 
     public void startDrive(int maxTime){
-
+        for(int i=0;i<maxTime;i++){
+            System.out.println("TURN "+(i+1));
+            for(int j=0;j<numOfVehicles;j++){
+                currentVehicles.get(j).move();
+            }
+        }
     }
 }

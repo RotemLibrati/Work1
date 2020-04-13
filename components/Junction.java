@@ -69,21 +69,19 @@ public class Junction {
         ListIterator<Road> it1=enteringRoads.listIterator();
         ListIterator<Road> it2=exitingRoads.listIterator();
         int i=0;
-        while(it1.hasNext()){
-            if(!it1.next().getIsOpen()){
+        for(;i<enteringRoads.size();i++) {
+            if (!enteringRoads.get(i).getIsOpen()) {
                 enteringRoads.get(i).setIsOpen(true);
-                //System.out.println(enteringRoads.get(i).toString()+": green light");
                 break;
             }
-            i++;
         }
+
         i=0;
         while(it2.hasNext()){
             exitingRoads.get(i).setIsOpen(false);
             it2.next();
             i++;
         }
-        if(it1.previous().getIsOpen()) System.out.println(it1.previous().toString()+": green light");
     }
 
     public boolean checkAvailabilty(Road r){
