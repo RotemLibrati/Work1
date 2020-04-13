@@ -59,8 +59,8 @@ public class Junction {
     {
         if (!hasLights) {
             hasLights = true;
-            System.out.println(this.toString() + ": " + "traffic lights: ON. Delay time: " + delay);
         }
+        System.out.println(this.toString() + ": " + "traffic lights: ON. Delay time: " + delay);
     }
 
     public void changeLights(){
@@ -72,7 +72,7 @@ public class Junction {
         while(it1.hasNext()){
             if(!it1.next().getIsOpen()){
                 enteringRoads.get(i).setIsOpen(true);
-                System.out.println(enteringRoads.get(i).toString()+": green light");
+                //System.out.println(enteringRoads.get(i).toString()+": green light");
                 break;
             }
             i++;
@@ -83,6 +83,7 @@ public class Junction {
             it2.next();
             i++;
         }
+        System.out.println(it1.previous().toString()+": green light");
     }
 
     public boolean checkAvailabilty(Road r){
