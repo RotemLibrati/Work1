@@ -25,6 +25,7 @@ public class Map {
             for (int j = 0; j < number; j++) {
                 if (i != j) {
                     roads.add(new Road(junctions.get(i), junctions.get(j)));
+                    System.out.println(roads.get(roads.size()-1) + " has been created");
                     if (randJunc == j) {
                         junctions.get(randJunc).setLightsOn();
                         junctions.get(randJunc).changeLights();

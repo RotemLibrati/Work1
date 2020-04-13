@@ -1,5 +1,7 @@
 package components;
 
+import java.util.ArrayList;
+
 public class Vehicle {
     private int id;
     private VehicleType type;
@@ -15,7 +17,13 @@ public class Vehicle {
         this.type=type;
         speed=type.getSpeed();
         this.lastJunction=lastJunction;
-        currentRoute=new Route(this.lastJunction,this.type);
+        ArrayList<Junction> juncs=new ArrayList<>();
+        juncs.add(lastJunction);
+        ArrayList<Road> roads=new ArrayList<>();
+        roads.add(lastRoad);
+        currentRoute=new Route(juncs,roads,type);
+        spentTime=0;
+        movesNow=false;
     }
 
     //getters
@@ -46,6 +54,9 @@ public class Vehicle {
             i++;
         }
         System.out.println(toString()+ " is starting route from "+currentRoute.getJunctions().get(i)+ " to "+ lastJunction);
+        lastRoad=new Road(currentRoute.getJunctions().get(i),lastJunction);
+        if(!currentRoute.getJunctions().get(i).getHasLights())
+            System.out.println(toString() + " is waiting for green light at Junction " + currentRoute.getJunctions().get(i).getJunctionName());
         checkIn();
 
     }

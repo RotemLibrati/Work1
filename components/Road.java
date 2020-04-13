@@ -42,7 +42,6 @@ public class Road {
         from.setExitingRoad(this);
         fromJunc = from;
         toJunc = to;
-        System.out.println(this.toString() + " has been created");
     }
 
     public Road(Junction from, Junction to, ArrayList<VehicleType> allowed, boolean open, boolean enabled) {
