@@ -54,6 +54,8 @@ public class Driving
         currentMap=new Map(numOfJuncs);
     }
 
+
+
     public void addVehicles(){
     //creates random number (2-8) of vehicles of different types.
         VehicleType [] arr = {new VehicleType("bus", 60),new VehicleType("motorcycle", 120),new VehicleType("car", 90),

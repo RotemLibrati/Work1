@@ -29,6 +29,7 @@ public class Vehicle {
         currentRoute=new Route(juncs,roads,type);
         spentTime=0;
         movesNow=false;
+        System.out.println(this + " has been created and placed at " + lastJunction);
     }
 
     //getters
@@ -54,16 +55,26 @@ public class Vehicle {
     public void move() {
     /* wait for the current point delay time and move to the next
     point of the route.*/
+
+    //TODO: problem here with the while loop-check with never equals or with first condition-because where a car reach the junction and junction has no exit roads,it do not need to print the movement outpur on the route
         int i=0;
-        while(lastJunction.equals(currentRoute.getJunctions().get(i))){
+        boolean hasNoExits=false;
+        while(!lastJunction.equals(currentRoute.getJunctions().get(i))){
             i++;
+            if(i>=currentRoute.getJunctions().size()) {
+                i--;
+                hasNoExits=true;
+                break;
+            }
         }
-        System.out.println(toString()+ " is starting route from "+currentRoute.getJunctions().get(i)+ " to "+ lastJunction);
-        lastRoad=new Road(currentRoute.getJunctions().get(i),lastJunction);
-        checkIn();
-        if(!currentRoute.getJunctions().get(i).getHasLights())
+        if(currentRoute.getJunctions().get(i).getExitingRoads().size()>0)
+            System.out.println(toString() + " is starting route from " + currentRoute.getJunctions().get(i) + " to " + lastJunction);
+            lastJunction = currentRoute.getJunctions().get(i);
+            lastRoad = new Road(lastJunction, currentRoute.getJunctions().get(i));
+            checkIn();
+         if(!currentRoute.getJunctions().get(i).getHasLights())
             System.out.println(toString() + " is waiting for green light at Junction " + currentRoute.getJunctions().get(i).getJunctionName());
-        else if(currentRoute.getJunctions().get(i).getExitingRoads().size()==0)
+        else if(lastJunction.getExitingRoads().size()==0 || hasNoExits)
             System.out.println(toString()+" stays at "+ currentRoute.getJunctions().get(i).toString()+" - no exiting roads.");
         else{
             System.out.println(toString()+" is moving on "+lastRoad.toString()+" Delay time:"+ String.format("%8f",lastJunction.getDelay()));
