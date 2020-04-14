@@ -59,13 +59,17 @@ public class Vehicle {
         int i = 0;
         if (currentRoute.getJunctions().get(i) != currentRoute.getEnd() && i < currentRoute.getJunctions().size() - 1) {
             System.out.println(toString() + " starting route from " + currentRoute.getJunctions().get(i) + " to " + currentRoute.getJunctions().get(i + 1));
-            if (currentRoute.getJunctions().get(i).getHasLights())
+            if (currentRoute.getJunctions().get(i).getHasLights()) {
                 System.out.println(toString() + " is waiting for green light at " + currentRoute.getJunctions().get(i));
-            else if(currentRoute.getJunctions().get(i).checkAvailabilty(currentRoute.getJunctions().get(i).getEnteringRoads().get(i)))
-                System.out.println(toString() + " is waiting for his priority at junction " + currentRoute.getJunctions().get(i).getJunctionName());
+                checkIn();
+            }
+//            else if(currentRoute.getJunctions().get(i).checkAvailabilty(currentRoute.getJunctions().get(i).getEnteringRoads().get(i))) {
+//                System.out.println(toString() + " is waiting for his priority at junction " + currentRoute.getJunctions().get(i).getJunctionName());
+//                checkIn();
+ //           }
             else if (currentRoute.getJunctions().get(i) != currentRoute.getEnd() || currentRoute.getJunctions().get(i) != lastJunction) {
                 System.out.println(toString() + " has left " + currentRoute.getJunctions().get(i));
-                System.out.println(toString() + " is moving on " + currentRoute.getJunctions().get(i).getExitingRoads().get(i).toString() + " Delay time: ");
+                System.out.println(toString() + " is moving on " + currentRoute.getJunctions().get(i).getExitingRoads().get(i).toString() + " Delay time: " + currentRoute.getJunctions().get(i).getDelay());
                 System.out.println(toString() + " has arrived to " + currentRoute.getJunctions().get(i).getExitingRoads().get(i).getToJunc().getJunctionName());
             }
         } else if (currentRoute.getJunctions().get(i) == lastJunction)
