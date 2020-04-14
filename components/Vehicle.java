@@ -67,7 +67,7 @@ public class Vehicle {
                 break;
             }
         }
-        if(currentRoute.getJunctions().get(i).getExitingRoads().size()>0)
+        if(currentRoute.getJunctions().get(i).getExitingRoads().size()>0 && currentRoute.getJunctions().get(i) != lastJunction)
             System.out.println(toString() + " is starting route from " + currentRoute.getJunctions().get(i) + " to " + lastJunction);
             lastJunction = currentRoute.getJunctions().get(i);
             lastRoad = new Road(lastJunction, currentRoute.getJunctions().get(i));

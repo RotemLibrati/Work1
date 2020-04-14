@@ -116,6 +116,8 @@ public class Driving
                 if(currentMap.getRoads().get(j).getIsOpen())
                     System.out.println(currentMap.getRoads().get(j).toString()+": green light");
             }
+
+
         }
         System.out.println("STATUS");
         for(int i=0;i<currentVehicles.size();i++){
