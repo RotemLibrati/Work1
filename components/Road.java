@@ -41,8 +41,8 @@ public class Road {
         toJunc = to;
         length = countLength();
         maxSpeed=(rand.nextInt(12)+2)*10;//Set the value of max-speed between 20-120
-        to.setEnteringRoad(this);
-        from.setExitingRoad(this);
+        if(!from.getEnteringRoads().contains(this)) to.setEnteringRoad(this);
+        if(!to.getExitingRoads().contains(this)) from.setExitingRoad(this);
         fromJunc = from;
         toJunc = to;
     }

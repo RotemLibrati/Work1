@@ -69,7 +69,7 @@ public class Route {
                 length += (junctions.get(i).getDelay()) * (junctions.get(i).getEnteringRoads().size() - 1);
             } else {
                 for (int j = 0; j < roads.size(); j++) {
-                    if (maxSpeed < roads.get(j).getMaxSpeed()) maxSpeed = roads.get(j).getMaxSpeed();
+                    //if (maxSpeed < roads.get(j).getMaxSpeed()) maxSpeed = roads.get(j).getMaxSpeed();
                     if (roads.get(j).getToJunc() == junctions.get(i)) {
                         length += j;
                     }
@@ -79,7 +79,7 @@ public class Route {
         for(int i=0;i<roads.size();i++){
             if(maxSpeed<roads.get(i).getMaxSpeed()) maxSpeed=roads.get(i).getMaxSpeed();
             }
-        delay=length/(Math.min(vehicleType.speed,maxSpeed));
+        delay+=length/(Math.min(vehicleType.speed,maxSpeed));
         return delay;
     }
 

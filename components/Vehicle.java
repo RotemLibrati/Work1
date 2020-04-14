@@ -57,52 +57,31 @@ public class Vehicle {
     /* wait for the current point delay time and move to the next
     point of the route.*/
         int i = 0;
-        System.out.println(currentRoute.getJunctions());
-        if (currentRoute.getJunctions().get(i) != currentRoute.getEnd() && i < currentRoute.getJunctions().size() - 1) {
-            System.out.println(toString() + " starting route from " + currentRoute.getJunctions().get(i) + " to " + currentRoute.getJunctions().get(i + 1));
+        for(;i<currentRoute.getJunctions().size()&&(lastJunction.getJunctionName().equals(currentRoute.getJunctions().get(i).getJunctionName()));i++);
+        if(i>=currentRoute.getJunctions().size()) i=currentRoute.getJunctions().indexOf(currentRoute.getEnd());
+        lastRoad=new Road(currentRoute.getJunctions().get(i),lastJunction);
+        if (currentRoute.getJunctions().get(i).getJunctionName().equals(lastJunction.getJunctionName())) {
+            System.out.println(toString() + " stays at " + lastJunction + " - no exiting roads");
+        }
+        else if (currentRoute.getJunctions().get(i) != currentRoute.getEnd() && i < currentRoute.getJunctions().size() - 1) {
+            System.out.println(toString() + " starting route from " + lastJunction + " to " + currentRoute.getJunctions().get(i));
+
             if (currentRoute.getJunctions().get(i).getHasLights()) {
-                System.out.println(toString() + " is waiting for green light at " + currentRoute.getJunctions().get(i));
                 checkIn();
             }
-            else if(currentRoute.getJunctions().get(i).checkAvailabilty(currentRoute.getJunctions().get(i).getEnteringRoads().get(i))) {
+        /*    else if(currentRoute.getJunctions().get(i).checkAvailabilty(currentRoute.getJunctions().get(i).getEnteringRoads().get(i))) {
                 System.out.println(toString() + " is waiting for his priority at junction " + currentRoute.getJunctions().get(i).getJunctionName());
                checkIn();
-            }
-            else if (currentRoute.getJunctions().get(i) != currentRoute.getEnd() || currentRoute.getJunctions().get(i) != lastJunction) {
-                System.out.println(toString() + " has left " + currentRoute.getJunctions().get(i));
-                System.out.println(toString() + " is moving on " + currentRoute.getJunctions().get(i).getExitingRoads().get(i).toString() + " Delay time: " + currentRoute.getJunctions().get(i).getDelay());
+            }*/
+            else if (currentRoute.getJunctions().get(i) != currentRoute.getEnd() && currentRoute.getJunctions().get(i) != lastJunction) {
+                System.out.println(toString() + " has left " + lastJunction);
+                System.out.println(toString() + " is moving on " + currentRoute.getJunctions().get(i).getExitingRoads().indexOf(lastRoad) + " Delay time: " + currentRoute.getJunctions().get(i).getDelay());
                 System.out.println(toString() + " has arrived to " + currentRoute.getJunctions().get(i).getExitingRoads().get(i).getToJunc().getJunctionName());
             }
-        } else if (currentRoute.getJunctions().get(i) == lastJunction)
-            System.out.println(toString() + " stays at " + lastJunction + " - no exiting roads");
-    }
+            lastJunction = lastRoad.getFromJunc();
+        }
 
-    //TODO: problem here with the while loop-check with never equals or with first condition-because where a car reach the junction and junction has no exit roads,it do not need to print the movement outpur on the route
-//        int i=0;
-//        boolean hasNoExits=false;
-//        while(!lastJunction.equals(currentRoute.getJunctions().get(i))){
-//            i++;
-//            if(i>=currentRoute.getJunctions().size()) {
-//                i--;
-//                hasNoExits=true;
-//                break;
-//            }
-//        }
-//        if(currentRoute.getJunctions().get(i).getExitingRoads().size()>0 && currentRoute.getJunctions().get(i) != lastJunction)
-//            System.out.println(toString() + " is starting route from " + currentRoute.getJunctions().get(i) + " to " + lastJunction);
-//        lastJunction = currentRoute.getJunctions().get(i);
-//            lastRoad = new Road(currentRoute.getJunctions().get(i), lastJunction);
-//        checkIn();
-//         if(!currentRoute.getJunctions().get(i).getHasLights())
-//            System.out.println(toString() + " is waiting for green light at Junction " + currentRoute.getJunctions().get(i).getJunctionName());
-//        else if(lastJunction.getExitingRoads().size()==0 || hasNoExits)
-//            System.out.println(toString()+" stays at "+ currentRoute.getJunctions().get(i).toString()+" - no exiting roads.");
-//        else{
-//            System.out.println(toString() + " has left Junction " + currentRoute.getJunctions().get(i).getJunctionName());
-//        if(lastRoad.getFromJunc() != lastRoad.getToJunc())
-//                System.out.println(toString()+" is moving on "+lastRoad.toString()+" Delay time:"+ String.format("%8f",lastJunction.getDelay()));
-//        }
-//    }
+    }
 
     public void status() {
     /*prints the details about the vehicle including current
