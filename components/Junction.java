@@ -1,5 +1,5 @@
 /*Yehonatan Hen-207630112
-* Rotem Librati-
+* Rotem Librati- 307903732
  */
 
 package components;
@@ -87,10 +87,10 @@ public class Junction {
         }
     }
 
-    public boolean checkAvailabilty(Road r){
+    public boolean checkAvailabilty(Road r){//TODO check this function
         /*for vehicle that arrived to the junction from road r, checks if there
          are some other vehicles on the roads with a higher traffic priority on the junction.*/
-        if (vehicles.get(0)==r) return true;
+        if (vehicles.size()==0) return true;
         else{
          for(int i=0;i<vehicles.size() && r!=vehicles.get(i);i++){
              if (!vehicles.get(i).getIsOpen()) return false;

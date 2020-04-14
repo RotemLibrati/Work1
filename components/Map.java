@@ -1,5 +1,5 @@
 /*Yehonatan Hen-207630112
- * Rotem Librati-
+ * Rotem Librati-307903732
  */
 package components;
 
@@ -36,7 +36,7 @@ public class Map {
                     if (randJunc==j) {
                         junctions.get(randJunc).setLightsOn();
                         junctions.get(randJunc).changeLights();
-                        System.out.println(roads.get(roads.size() - 1).toString() + ": green light");
+                        System.out.println(roads.get(roads.size()-1).toString() + ": green light");
                     }
                 }
             }
@@ -136,4 +136,6 @@ public class Map {
     public ArrayList<Road> getRoads() {
         return roads;
     }
+
 }
+

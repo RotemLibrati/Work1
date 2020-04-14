@@ -1,5 +1,5 @@
 /*Yehonatan Hen-207630112
- * Rotem Librati-
+ * Rotem Librati-307903732
  */
 package game;
 import  components.*;
@@ -110,12 +110,12 @@ public class Driving
             for(int j=0;j<numOfVehicles;j++){
                 currentVehicles.get(j).move();
             }
-            for(int j=0;j<currentMap.getRoads().size();j++){
-                currentMap.getRoads().get(j).getToJunc().changeLights();
-                currentMap.getRoads().get(j).getFromJunc().changeLights();
-                if(currentMap.getRoads().get(j).getIsOpen())
-                    System.out.println(currentMap.getRoads().get(j).toString()+": green light");
-            }
+//            for(int j=0;j<currentMap.getRoads().size();j++){
+//                currentMap.getRoads().get(j).getToJunc().changeLights();
+//                currentMap.getRoads().get(j).getFromJunc().changeLights();
+//                if(currentMap.getRoads().get(j).getFromJunc().getHasLights())
+//                    System.out.println(currentMap.getRoads().get(j).toString()+": green light");
+//            }
 
 
         }
