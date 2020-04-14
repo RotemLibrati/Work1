@@ -33,7 +33,7 @@ public class Map {
                     if(tempRoad.getIsEnabled()) {
                         addRoad(tempRoad);
                     }
-                    if (randJunc==j) {
+                    if (randJunc==j && roads.size()>=1) {
                         junctions.get(randJunc).setLightsOn();
                         junctions.get(randJunc).changeLights();
                         System.out.println(roads.get(roads.size()-1).toString() + ": green light");

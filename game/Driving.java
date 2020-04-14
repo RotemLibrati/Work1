@@ -85,7 +85,9 @@ public class Driving
             while((currentMap.getJunctions().get(j).getExitingRoads().size()==0) ||
                 (tempJunctions.size()<10 && tempRoads.size()<9)){
                 j=r.nextInt(currentMap.getJunctions().size());
-                tempJunctions.add(currentMap.getJunctions().get(j));
+                if(!tempJunctions.contains(currentMap.getJunctions().get(j))) {
+                    tempJunctions.add(currentMap.getJunctions().get(j));
+                }
                 Junction lastJunc=currentVehicles.get(i).getLastJunction();
                 for(int k=0;k<currentMap.getRoads().size();k++){
                     if(currentMap.getRoads().get(k).getFromJunc()==lastJunc){
