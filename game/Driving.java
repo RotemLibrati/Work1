@@ -82,19 +82,20 @@ public class Driving
     }
 
     public void startDrive(int maxTime){
-        for(int i=0;i<maxTime;i++){
-            System.out.println("TURN "+(i+1));
-            for(int j=0;j<numOfVehicles;j++){
+        for(int i=0;i<maxTime;i++) {
+            System.out.println("TURN " + (i + 1));
+            for (int j = 0; j < numOfVehicles; j++) {
                 currentVehicles.get(j).move();
             }
-            for(int j=0;j<currentMap.getRoads().size();j++){
-                currentMap.getRoads().get(j).getToJunc().changeLights();
-               currentMap.getRoads().get(j).getFromJunc().changeLights();
-                if(currentMap.getRoads().get(j).getFromJunc().getHasLights())
-                    System.out.println(currentMap.getRoads().get(j).toString()+": green light");
-           }
-
-
+            for (int j = 0; j < currentVehicles.size(); j++) {
+                currentVehicles.get(j).getLastJunction().changeLights();
+                //currentMap.getRoads().get(j).getToJunc().changeLights();
+                //currentMap.getRoads().get(j).getFromJunc().changeLights();
+                for (int k = 0; k < currentVehicles.get(j).getLastJunction().getVehicles().size(); k++) {
+                    if (currentVehicles.get(j).getLastJunction().getVehicles().get(k).getIsOpen())
+                        System.out.println(currentVehicles.get(j).getLastJunction().getVehicles().get(k) + ": green light");
+                }
+            }
         }
         System.out.println("STATUS");
         for(int i=0;i<currentVehicles.size();i++){
