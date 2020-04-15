@@ -28,8 +28,8 @@ public class Vehicle {
         ArrayList<Road> roads=new ArrayList<>();
         roads.add(lastRoad);
         currentRoute=new Route(juncs,roads,type);
-        spentTime=0;
         movesNow=false;
+        spentTime=0;
         System.out.println(this + " has been created and placed at " + lastJunction);
     }
 
@@ -77,7 +77,7 @@ public class Vehicle {
         }
         else {
             //If road isn't available
-            if (lastJunction.checkAvailabilty(lastRoad)) {
+            if (lastJunction.checkAvailabilty(lastRoad) || !lastJunction.getHasLights()) {
                     System.out.println(this + " is waiting for green light at " + lastJunction);
                     checkIn();
             }
@@ -88,12 +88,10 @@ public class Vehicle {
                 lastJunction=currentRoute.getJunctions().get(i+1);
                 System.out.println(this+" has arrived to "+ lastJunction);
                 lastJunction.getVehicles().add(lastRoad);
+                spentTime++;
             }
 
         }
-
-
-
 
     }
 

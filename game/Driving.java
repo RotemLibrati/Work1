@@ -87,12 +87,12 @@ public class Driving
             for(int j=0;j<numOfVehicles;j++){
                 currentVehicles.get(j).move();
             }
-//            for(int j=0;j<currentMap.getRoads().size();j++){
-//                currentMap.getRoads().get(j).getToJunc().changeLights();
-//                currentMap.getRoads().get(j).getFromJunc().changeLights();
-//                if(currentMap.getRoads().get(j).getFromJunc().getHasLights())
-//                    System.out.println(currentMap.getRoads().get(j).toString()+": green light");
-//            }
+            for(int j=0;j<currentMap.getRoads().size();j++){
+                currentMap.getRoads().get(j).getToJunc().changeLights();
+               currentMap.getRoads().get(j).getFromJunc().changeLights();
+                if(currentMap.getRoads().get(j).getFromJunc().getHasLights())
+                    System.out.println(currentMap.getRoads().get(j).toString()+": green light");
+           }
 
 
         }
