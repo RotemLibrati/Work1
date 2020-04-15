@@ -69,10 +69,10 @@ public class Vehicle {
             if (currentRoute.getJunctions().get(i).getHasLights()) {
                 checkIn();
             }
-        /*    else if(currentRoute.getJunctions().get(i).checkAvailabilty(currentRoute.getJunctions().get(i).getEnteringRoads().get(i))) {
+            else if(currentRoute.getJunctions().get(i).checkAvailabilty(currentRoute.getJunctions().get(i).getEnteringRoads().get(i))) {
                 System.out.println(toString() + " is waiting for his priority at junction " + currentRoute.getJunctions().get(i).getJunctionName());
                checkIn();
-            }*/
+            }
             else if (currentRoute.getJunctions().get(i) != currentRoute.getEnd() && currentRoute.getJunctions().get(i) != lastJunction) {
                 System.out.println(toString() + " has left " + lastJunction);
                 System.out.println(toString() + " is moving on " + currentRoute.getJunctions().get(i).getExitingRoads().indexOf(lastRoad) + " Delay time: " + currentRoute.getJunctions().get(i).getDelay());
