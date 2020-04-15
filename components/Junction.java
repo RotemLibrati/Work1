@@ -40,6 +40,7 @@ public class Junction {
     public ArrayList<Road> getVehicles(){return vehicles;}
     public int sizeOfEnteringRoads(){return enteringRoads.size();}
 
+
     //setters
     public void setExitingRoad(final Road exit){
         for(Road r:exitingRoads) {
@@ -66,7 +67,10 @@ public class Junction {
         }
         System.out.println(this.toString() + ": " + "traffic lights: ON. Delay time: " + delay);
     }
-
+    public void setsLightsOn() {
+        if (!hasLights)
+            hasLights =true;
+    }
     public void changeLights(){
         /*make the next entering road in the list green (open) and
         all the others (exiting only) red (closed).*/
@@ -86,6 +90,8 @@ public class Junction {
             i++;
         }
     }
+
+
 
     public boolean checkAvailabilty(Road r){//TODO check this function
         /*for vehicle that arrived to the junction from road r, checks if there
