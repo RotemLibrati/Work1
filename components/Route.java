@@ -18,7 +18,6 @@ public class Route {
         this.junctions = new ArrayList<>();
         this.junctions.addAll(juncs);
         this.roads = new ArrayList<>();
-        this.roads.addAll(roads);
         this.vehicleType = new VehicleType(vehType.getTypeName(),vehType.getSpeed());
         Random r=new Random();
         this.delay = r.nextInt(11)+1;
@@ -69,8 +68,7 @@ public class Route {
                 length += (junctions.get(i).getDelay()) * (junctions.get(i).getEnteringRoads().size() - 1);
             } else {
                 for (int j = 0; j < roads.size(); j++) {
-                    //if (maxSpeed < roads.get(j).getMaxSpeed()) maxSpeed = roads.get(j).getMaxSpeed();
-                    if (roads.get(j).getToJunc() == junctions.get(i)) {
+                    if (roads.get(j).getToJunc().equals(junctions.get(i))) {
                         length += j;
                     }
                 }

@@ -56,54 +56,29 @@ public class Driving
 
 
 
-    public void addVehicles(){
-    //creates random number (2-8) of vehicles of different types.
-        VehicleType [] arr = {new VehicleType("bus", 60),new VehicleType("motorcycle", 120),new VehicleType("car", 90),
-                new VehicleType("truck", 80),new VehicleType("semitrailer",80),new VehicleType("bicycle",40),
-                new VehicleType("tram",50),new VehicleType("ambulance",100)};
-        Random r=new Random();
-        currentVehicles=new ArrayList<>();
-        for(int i=0;i<numOfVehicles;i++){
+    public void addVehicles() {
+        //creates random number (2-8) of vehicles of different types.
+        VehicleType[] arr = {new VehicleType("bus", 60), new VehicleType("motorcycle", 120), new VehicleType("car", 90),
+                new VehicleType("truck", 80), new VehicleType("semitrailer", 80), new VehicleType("bicycle", 40),
+                new VehicleType("tram", 50), new VehicleType("ambulance", 100)};
+        Random r = new Random();
+        Junction start;
+        currentVehicles = new ArrayList<>();
+        for (int i = 0; i < numOfVehicles; i++) {
             VehicleType t = arr[r.nextInt(8)];
-            currentVehicles.add(new Vehicle(i,t,currentMap.getJunctions().get(r.nextInt(currentMap.getJunctions().size()))));
-        }
-        for(int i=0;i<currentVehicles.size();i++) {
-            System.out.println(currentVehicles.get(i) + " has been created and placed at " + currentVehicles.get(i).getLastJunction());
-        }
-        //make routes for created vehicles.route finish in junction without exit roads or route include 10 junctions and 9 roads
-        for(int i=0;i<numOfVehicles;i++){
-            int start=r.nextInt(numOfJuncs);
-            //check if start junction has exiting roads
-            while(currentMap.getJunctions().get(start).getExitingRoads().size()==0) {
-                start=r.nextInt((numOfJuncs));
+            start = currentMap.getJunctions().get(r.nextInt(currentMap.getJunctions().size()));
+            currentVehicles.add(new Vehicle(i, t, start));
+            //make randomal route
+            for (int j = 0; j < numOfJuncs; j++) {
+                int indexOfNextJunc = r.nextInt(numOfJuncs);
+                if (!currentVehicles.get(i).getCurrentRoute().getJunctions().contains(currentMap.getJunctions().get(indexOfNextJunc))) {
+                    currentVehicles.get(i).getCurrentRoute().getJunctions().add(currentVehicles.get(i).getCurrentRoute().getJunctions().size(), currentMap.getJunctions().get(indexOfNextJunc));
+                    currentVehicles.get(i).getCurrentRoute().getRoads().add(new Road(start, currentMap.getJunctions().get(indexOfNextJunc)));
+                    start = currentMap.getJunctions().get(indexOfNextJunc);
+                }
             }
-            ArrayList<Road> tempRoads=new ArrayList<>();
-            ArrayList<Junction> tempJunctions=new ArrayList<>();
-            //make first junction
-            currentVehicles.get(i).getCurrentRoute().getJunctions().add(currentMap.getJunctions().get(start));
-            int j=start;
-            while((currentMap.getJunctions().get(j).getExitingRoads().size()==0) ||
-                (tempJunctions.size()<10 && tempRoads.size()<9)){
-                j=r.nextInt(currentMap.getJunctions().size());
-                if(!tempJunctions.contains(currentMap.getJunctions().get(j))) {
-                    tempJunctions.add(currentMap.getJunctions().get(j));
-                }
-                Junction lastJunc=currentVehicles.get(i).getLastJunction();
-                for(int k=0;k<currentMap.getRoads().size();k++){
-                    if(currentMap.getRoads().get(k).getFromJunc()==lastJunc){
-                        for(int z=0;z<currentMap.getJunctions().size();z++){
-                            if(currentMap.getJunctions().get(j)==currentMap.getRoads().get(k).getToJunc()){
-                                tempRoads.add(currentMap.getRoads().get(k));
-                                break;
-                            }
-                        }
-                    }
-                }
+        }
 
-            }
-            Route route=new Route(tempJunctions,tempRoads,currentVehicles.get(i).getType());
-            currentVehicles.get(i).setCurrentRoute(route);
-        }
     }
 
     public void startDrive(int maxTime){

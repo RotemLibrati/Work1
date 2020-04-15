@@ -56,32 +56,46 @@ public class Vehicle {
     public void move() {
     /* wait for the current point delay time and move to the next
     point of the route.*/
-        int i = 0;
-        for(;i<currentRoute.getJunctions().size()&&(lastJunction.getJunctionName().equals(currentRoute.getJunctions().get(i).getJunctionName()));i++);
-        if(i>=currentRoute.getJunctions().size()) i=currentRoute.getJunctions().indexOf(currentRoute.getEnd());
-        lastRoad=new Road(currentRoute.getJunctions().get(i),lastJunction);
-        if (currentRoute.getJunctions().get(i).getJunctionName().equals(lastJunction.getJunctionName())) {
-            System.out.println(toString() + " stays at " + lastJunction + " - no exiting roads");
+        int i=0;
+        while(!lastJunction.equals(currentRoute.getJunctions().get(i)) && !lastJunction.equals(currentRoute.getEnd())){
+            i++;
         }
-        else if (currentRoute.getJunctions().get(i) != currentRoute.getEnd() && i < currentRoute.getJunctions().size() - 1) {
-            System.out.println(toString() + " starting route from " + lastJunction + " to " + currentRoute.getJunctions().get(i));
-
-            if (currentRoute.getJunctions().get(i).getHasLights()) {
+        lastRoad=new Road(lastJunction,currentRoute.getJunctions().get(i+1));
+        //if vehicle is at the start of the route
+        if(lastJunction.equals(currentRoute.getStart())){
+            System.out.println(this+" is starting route from "+currentRoute.getStart()+" to "+ currentRoute.getEnd());
+        }
+        //If junction don't have exiting roads
+        if(lastJunction.getExitingRoads().size()==0){
+            System.out.println(this+" stays at "+lastJunction+" - no exiting roads");
+            checkIn();
+        }
+        //if vehicle arrived to last junction of the roads
+        else if(lastJunction.equals(currentRoute.getEnd())) {
+            System.out.println(this+" has finished the route. Total time:"+spentTime);
+        }
+        else {
+            //If road isn't available
+            if (!lastJunction.checkAvailabilty(lastRoad)) {
+                System.out.println(this + " is waiting for green light at " + lastJunction);
                 checkIn();
+                }
+            //car movement
+            else{
+                System.out.println(this+" has left "+lastJunction);
+                System.out.println(this+" is moving on "+ lastRoad+". Delay time: "+ currentRoute.getDelay());
+                lastJunction=currentRoute.getJunctions().get(i+1);
+                System.out.println(this+" has arrived to "+ lastJunction);
+                lastJunction.getVehicles().add(lastRoad);
             }
-            else if(currentRoute.getJunctions().get(i).checkAvailabilty(currentRoute.getJunctions().get(i).getEnteringRoads().get(i))) {
-                System.out.println(toString() + " is waiting for his priority at junction " + currentRoute.getJunctions().get(i).getJunctionName());
-               checkIn();
-            }
-            else if (currentRoute.getJunctions().get(i) != currentRoute.getEnd() && currentRoute.getJunctions().get(i) != lastJunction) {
-                System.out.println(toString() + " has left " + lastJunction);
-                System.out.println(toString() + " is moving on " + currentRoute.getJunctions().get(i).getExitingRoads().indexOf(lastRoad) + " Delay time: " + currentRoute.getJunctions().get(i).getDelay());
-                System.out.println(toString() + " has arrived to " + currentRoute.getJunctions().get(i).getExitingRoads().get(i).getToJunc().getJunctionName());
-            }
-            lastJunction = lastRoad.getFromJunc();
+
         }
+
+
+
 
     }
+
 
     public void status() {
     /*prints the details about the vehicle including current
@@ -94,7 +108,8 @@ public class Vehicle {
      /*if arrived to a junction, update the junction waiting list
       and calculate the delay time before the next move.*/
      lastJunction.getVehicles().add(lastRoad);
-     spentTime=currentRoute.calcDelay();
+     currentRoute.getRoads().add(lastRoad);
+     spentTime+=currentRoute.calcDelay();
      lastJunction.setDelay(spentTime);
     }
 
