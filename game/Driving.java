@@ -92,7 +92,7 @@ public class Driving
                 for(int k=0;k<currentMap.getRoads().size();k++){
                     if(currentMap.getRoads().get(k).getFromJunc()==lastJunc){
                         for(int z=0;z<currentMap.getJunctions().size();z++){
-                            if(currentMap.getJunctions().get(j)==currentMap.getRoads().get(k).getToJunc()){
+                            if(currentMap.getJunctions().get(j)==currentMap.getRoads().get(k).getToJunc() && !tempRoads.contains(currentMap.getRoads().get(k))){
                                 tempRoads.add(currentMap.getRoads().get(k));
                                 break;
                             }
