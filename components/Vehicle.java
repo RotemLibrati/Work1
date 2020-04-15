@@ -61,6 +61,7 @@ public class Vehicle {
             i++;
         }
         lastRoad=new Road(lastJunction,currentRoute.getJunctions().get(i+1));
+
         //if vehicle is at the start of the route
         if(lastJunction.equals(currentRoute.getStart())){
             System.out.println(this+" is starting route from "+currentRoute.getStart()+" to "+ currentRoute.getEnd());
@@ -76,10 +77,10 @@ public class Vehicle {
         }
         else {
             //If road isn't available
-            if (!lastJunction.checkAvailabilty(lastRoad)) {
-                System.out.println(this + " is waiting for green light at " + lastJunction);
-                checkIn();
-                }
+            if (lastJunction.checkAvailabilty(lastRoad)) {
+                    System.out.println(this + " is waiting for green light at " + lastJunction);
+                    checkIn();
+            }
             //car movement
             else{
                 System.out.println(this+" has left "+lastJunction);
