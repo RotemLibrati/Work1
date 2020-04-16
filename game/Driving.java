@@ -18,11 +18,11 @@ public class Driving
     private double drivingTime; // time passed from the beginning of driving session
     private int maxTime; // total round time
 
-    public Driving(int juncs,int vehicles,int maxTime){
+    public Driving(final int juncs,final int vehicles,final int maxTime){
         numOfJuncs=juncs;
         numOfVehicles=vehicles;
         this.maxTime=maxTime;
-        //currentVehicles=new ArrayList<>();
+        currentVehicles=new ArrayList<>();
         currentMap=new Map(numOfJuncs);
         addVehicles();
         drivingTime=0;
@@ -81,7 +81,7 @@ public class Driving
 
     }
 
-    public void startDrive(int maxTime){
+    public void startDrive(final int maxTime){
         for(int i=0;i<maxTime;i++) {
             System.out.println("TURN " + (i + 1));
             for (int j = 0; j < numOfVehicles; j++) {
@@ -89,8 +89,6 @@ public class Driving
             }
             for (int j = 0; j < currentVehicles.size(); j++) {
                 currentVehicles.get(j).getLastJunction().changeLights();
-                //currentMap.getRoads().get(j).getToJunc().changeLights();
-                //currentMap.getRoads().get(j).getFromJunc().changeLights();
                 for (int k = 0; k < currentVehicles.get(j).getLastJunction().getVehicles().size(); k++) {
                     if (currentVehicles.get(j).getLastJunction().getVehicles().get(k).getIsOpen())
                         System.out.println(currentVehicles.get(j).getLastJunction().getVehicles().get(k) + ": green light");

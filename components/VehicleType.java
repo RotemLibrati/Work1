@@ -13,7 +13,7 @@ public class VehicleType {
     int speed; // average speed of vehicle type
 
 
-    public VehicleType(String name, int speed)
+    public VehicleType(final String name,final int speed)
     {
         this.typeName = name;
         this.speed = speed;

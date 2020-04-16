@@ -9,7 +9,7 @@ public class Point {
     double x;
     double y;
 
-    public Point(double x, double y) {
+    public Point(final double x,final double y) {
         if (x >= 0 && x <= 1000000) this.x = x;
         else
         {
@@ -57,7 +57,7 @@ public class Point {
         return false;
     }
 
-    public static double getRandomDoubleBetweenRange(double min, double max){
+    public static double getRandomDoubleBetweenRange(final double min,final double max){
         //Function return randomal double between min to max
         double x = (Math.random()*((max-min)+1))+min;
         return x;

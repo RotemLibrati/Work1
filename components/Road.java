@@ -47,7 +47,7 @@ public class Road {
         toJunc = to;
     }
 
-    public Road(Junction from, Junction to, ArrayList<VehicleType> allowed, boolean open, boolean enabled) {
+    public Road(Junction from, Junction to, ArrayList<VehicleType> allowed,final boolean open,final boolean enabled) {
         allowedVehicles = new ArrayList<VehicleType>();
         allowedVehicles.addAll(allowed);
         isOpen = open;
@@ -92,11 +92,11 @@ public class Road {
     public int getEnteringRoads() {return toJunc.sizeOfEnteringRoads();}
 
     //setters
-    public void setFromJunc(Junction from) {
+    public void setFromJunc(final Junction from) {
         fromJunc = from;
     }
 
-    public void setToJunc(Junction to) {
+    public void setToJunc(final Junction to) {
         toJunc = to;
     }
 
@@ -105,19 +105,19 @@ public class Road {
         allowedVehicles.addAll(allowed);
     }
 
-    public void setIsOpen(boolean isOpen) {
+    public void setIsOpen(final boolean isOpen) {
         this.isOpen = isOpen;
     }
 
-    public void setIsEnabled(boolean isEnabled) {
+    public void setIsEnabled(final boolean isEnabled) {
         this.isEnabled = isEnabled;
     }
 
-    public void setLength(double length) {
+    public void setLength(final double length) {
         this.length = length;
     }
 
-    public void setMaxSpeed(int maxSpeed) {
+    public void setMaxSpeed(final int maxSpeed) {
         this.maxSpeed = maxSpeed;
     }
 

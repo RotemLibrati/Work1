@@ -14,7 +14,7 @@ public class Route {
     private double delay; // time that will take vehicle to make this route.
     private VehicleType vehicleType;
 
-    public Route(ArrayList<Junction> juncs, ArrayList<Road> roads, VehicleType vehType) {
+    public Route(ArrayList<Junction> juncs, ArrayList<Road> roads,final VehicleType vehType) {
         this.junctions = new ArrayList<>();
         this.junctions.addAll(juncs);
         this.roads = new ArrayList<>();

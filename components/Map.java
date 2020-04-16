@@ -14,7 +14,7 @@ public class Map {
     private ArrayList<Road> roads;
 
 
-    public  Map(int number)// new constructor that receive number of junctions and connect between them with roads
+    public  Map(final int number)// new constructor that receive number of junctions and connect between them with roads
             //NOTE: This contructor is'nt part of the demanded constructors, However, it is a consequence of Test&Driving class demands
     {
         roads = new ArrayList<>();
@@ -60,7 +60,7 @@ public class Map {
         }
     }
 
-    public Map(int junctions, int roads){
+    public Map( int junctions, int roads){
     //Creates a random map with given quantity of junctions and roads.
         this.roads=new ArrayList<>();
         this.junctions=new ArrayList<>();
@@ -98,28 +98,28 @@ public class Map {
         this.roads.addAll(roads);
     }
 
-    public void addRoad(Road r){
+    public void addRoad(final Road r){
         for (Road road : roads) {
             if (road.equals(r)) return;
         }
         roads.add(r);
     }
 
-    public void removeRoad(Road r){
+    public void removeRoad(final Road r){
         for (Road road : roads) {
             if (road.equals(r)) return;
         }
         roads.remove(r);
     }
 
-    public void addJunction(Junction junc){
+    public void addJunction(final Junction junc){
         for (Junction junction: junctions) {
             if (junction.equals(junc)) return;
         }
         junctions.add(junc);
         System.out.println(junc.toString()+" has been added to the map.");
     }
-    public void removeJunction(Junction junc){
+    public void removeJunction(final Junction junc){
         boolean flag=false;
         for(Junction junction : junctions){
             if(junction.equals(junc)) flag=true;
