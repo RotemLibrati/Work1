@@ -145,7 +145,7 @@ public class Vehicle {
     /*prints the details about the vehicle including current
     position, time spent on the route and the first and last junctions on the route*/
         System.out.println(toString() + " Position: " + lastJunction + " current Route: from" + currentRoute.getStart() +
-                " to " + currentRoute.getEnd() + " Time spent:" + String.format("%8f", this.getSpentTime()));
+                " to " + currentRoute.getEnd() + " Time spent:" + String.format("%4f", this.getSpentTime()));
     }
 
     public void checkIn() {

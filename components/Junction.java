@@ -72,6 +72,12 @@ public class Junction {
         all the others (exiting only) red (closed).*/
         int i=0;
         for(;i<enteringRoads.size();i++) {
+            if (enteringRoads.get(i).getIsOpen()) {
+                enteringRoads.get(i).setIsOpen(false);
+                break;
+            }
+        }
+        for(;i<enteringRoads.size();i++) {
             if (!enteringRoads.get(i).getIsOpen()) {
                 enteringRoads.get(i).setIsOpen(true);
                 break;

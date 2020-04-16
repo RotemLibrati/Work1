@@ -87,11 +87,14 @@ public class Driving
             for (int j = 0; j < numOfVehicles; j++) {
                 currentVehicles.get(j).move();
             }
+            ArrayList<String> tempRoads=new ArrayList<>();
             for (int j = 0; j < currentVehicles.size(); j++) {
                 currentVehicles.get(j).getLastJunction().changeLights();
                 for (int k = 0; k < currentVehicles.get(j).getLastJunction().getVehicles().size(); k++) {
-                    if (currentVehicles.get(j).getLastJunction().getVehicles().get(k).getIsOpen())
-                        System.out.println(currentVehicles.get(j).getLastJunction().getVehicles().get(k) + ": green light");
+                    if (currentVehicles.get(j).getLastJunction().getVehicles().get(k).getIsOpen() && !tempRoads.contains(currentVehicles.get(j).getLastJunction().getVehicles().get(k).toString())) {
+                            System.out.println(currentVehicles.get(j).getLastJunction().getVehicles().get(k) + ": green light");
+                            tempRoads.add(currentVehicles.get(j).getLastJunction().getVehicles().get(k).toString());
+                    }
                 }
             }
         }
