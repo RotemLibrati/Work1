@@ -1,5 +1,5 @@
 /*Yehonatan Hen-207630112
- * Rotem Librati-307903732
+ *Rotem Librati-307903732
  */
 package components;
 
@@ -99,6 +99,7 @@ public class Map {
     }
 
     public void addRoad(final Road r){
+        //adding new road to the map
         for (Road road : roads) {
             if (road.equals(r)) return;
         }
@@ -106,6 +107,7 @@ public class Map {
     }
 
     public void removeRoad(final Road r){
+        //remove exist road from the map
         for (Road road : roads) {
             if (road.equals(r)) return;
         }
@@ -113,6 +115,7 @@ public class Map {
     }
 
     public void addJunction(final Junction junc){
+        //adding new junction to the map
         for (Junction junction: junctions) {
             if (junction.equals(junc)) return;
         }
@@ -120,6 +123,7 @@ public class Map {
         System.out.println(junc.toString()+" has been added to the map.");
     }
     public void removeJunction(final Junction junc){
+        //remove exist junction from the map
         boolean flag=false;
         for(Junction junction : junctions){
             if(junction.equals(junc)) flag=true;

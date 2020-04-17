@@ -1,11 +1,12 @@
 /*Yehonatan Hen-207630112
- * Rotem Librati-307903732
+ *Rotem Librati-307903732
  */
 package utilities;
 
 import java.util.Random;
 
 public class Point {
+    //Implementation of point (x,y)
     double x;
     double y;
 

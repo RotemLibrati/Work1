@@ -1,5 +1,5 @@
 /*Yehonatan Hen-207630112
- * Rotem Librati-307903732
+ *Rotem Librati-307903732
  */
 package game;
 import  components.*;
@@ -10,6 +10,7 @@ import java.util.Random;
 
 
 public class Driving
+    //Implementation of driving the cars into their routes
 {
     private int numOfJuncs;
     private int numOfVehicles;
@@ -82,6 +83,7 @@ public class Driving
     }
 
     public void startDrive(final int maxTime){
+        //Start drive each car by number of times that depends on maxTime variable.
         for(int i=0;i<maxTime;i++) {
             System.out.println("TURN " + (i + 1));
             for (int j = 0; j < numOfVehicles; j++) {

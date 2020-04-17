@@ -1,5 +1,5 @@
 /*Yehonatan Hen-207630112
- * Rotem Librati-307903732
+ *Rotem Librati-307903732
  */
 package components;
 
@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Road {
+    //Class implement a road in the map.
     private Junction fromJunc;
     private Junction toJunc;
     private ArrayList<VehicleType> allowedVehicles;  // holds the list of vehicle types

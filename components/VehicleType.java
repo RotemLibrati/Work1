@@ -1,5 +1,5 @@
 /*Yehonatan Hen-207630112
- * Rotem Librati-307903732
+ *Rotem Librati-307903732
  */
 package components;
 
@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class VehicleType {
+    //Class make vehicle type attributes
     String typeName;
     int speed; // average speed of vehicle type
 
@@ -40,6 +41,7 @@ public class VehicleType {
     }
 
     public static ArrayList<VehicleType> getRandomVehicleTypes()
+            //Function return randomal Array list of vehicle types.
     {
         ArrayList<VehicleType> allowedVehicles;
         allowedVehicles = new ArrayList<VehicleType>();

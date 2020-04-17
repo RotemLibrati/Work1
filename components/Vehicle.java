@@ -1,5 +1,5 @@
 /*Yehonatan Hen-207630112
- * Rotem Librati-307903732
+ *Rotem Librati-307903732
  */
 package components;
 
@@ -9,6 +9,7 @@ import java.util.Random;
 import java.util.TooManyListenersException;
 
 public class Vehicle {
+    //Class implements a vehicle
     private int id;
     private VehicleType type;
     private int speed;  //average speed for this type of vehicle.

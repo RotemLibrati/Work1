@@ -1,5 +1,5 @@
 /*Yehonatan Hen-207630112
-* Rotem Librati- 307903732
+*Rotem Librati- 307903732
  */
 
 package components;
@@ -10,6 +10,7 @@ import java.util.ListIterator;
 import java.util.Random;
 
 public class Junction {
+    //Implementation of Junction with entering/exiting roads and orher features.
     private String junctionName;
     private Point location; // location of the junction on the map
     private ArrayList<Road> enteringRoads;  // holds the list of the roads that enter to the junction.
@@ -60,6 +61,7 @@ public class Junction {
     public void setDelay(final double delay){this.delay=delay;}
     public void setVehicles(final ArrayList<Road> vehicles){this.vehicles.addAll(vehicles);}
     public void setLightsOn()
+            //function turn lights of junction from OFF mode to ON mode
     {
         if (!hasLights) {
             hasLights = true;
