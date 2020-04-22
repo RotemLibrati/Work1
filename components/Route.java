@@ -1,6 +1,5 @@
-/*Yehonatan Hen-207630112
- *Rotem Librati-307903732
- */
+/**Yehonatan Hen-207630112
+ *Rotem Librati-307903732*/
 package components;
 
 import utilities.Point;
@@ -9,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Route {
-    //Class implement some route with junction and roads based on map features.
+    /**Class implement some route with junction and roads based on map features.*/
     private ArrayList<Junction> junctions; //list of junctions on the route by the order of movement.
     private ArrayList<Road> roads;// list of roads on the route by the order of movement.
     private double delay; // time that will take vehicle to make this route.
@@ -53,7 +52,7 @@ public class Route {
     public Junction getEnd() { return junctions.get(junctions.size()-1);}
 
     public double calcDelay() {
-        /*set length to be a sum of delay values of all the junctions
+        /**set length to be a sum of delay values of all the junctions
         *on the route and the time that will take this type of vehicle to pass all
         *the roads. Time is calculated by dividing the distance by min(average
         *speed, maxSpeed). The delay time on junctions is calculated according
@@ -83,7 +82,7 @@ public class Route {
     }
 
     public void printRoute()
-            //prints the route junction
+            /**prints the route junction*/
     {
         for(int i=0; i<junctions.size(); i++)
             System.out.println(junctions.get(i));

@@ -1,16 +1,14 @@
-/*Yehonatan Hen-207630112
-*Rotem Librati- 307903732
- */
+/**Yehonatan Hen-207630112
+*Rotem Librati- 307903732*/
 
 package components;
 import utilities.Point;
 
 import java.util.ArrayList;
-import java.util.ListIterator;
 import java.util.Random;
 
 public class Junction {
-    //Implementation of Junction with entering/exiting roads and orher features.
+    /**Implementation of Junction with entering/exiting roads and orher features.*/
     private String junctionName;
     private Point location; // location of the junction on the map
     private ArrayList<Road> enteringRoads;  // holds the list of the roads that enter to the junction.
@@ -61,7 +59,7 @@ public class Junction {
     public void setDelay(final double delay){this.delay=delay;}
     public void setVehicles(final ArrayList<Road> vehicles){this.vehicles.addAll(vehicles);}
     public void setLightsOn()
-            //function turn lights of junction from OFF mode to ON mode
+            /**function turn lights of junction from OFF mode to ON mode*/
     {
         if (!hasLights) {
             hasLights = true;
@@ -70,7 +68,7 @@ public class Junction {
     }
 
     public void changeLights(){
-        /*make the next entering road in the list green (open) and
+        /**make the next entering road in the list green (open) and
         all the others (exiting only) red (closed).*/
         int i=0;
         for(;i<enteringRoads.size();i++) {
@@ -91,7 +89,7 @@ public class Junction {
     }
 
     public boolean checkAvailabilty(final Road r){
-        /*for vehicle that arrived to the junction from road r, checks if there
+        /**for vehicle that arrived to the junction from road r, checks if there
          are some other vehicles on the roads with a higher traffic priority on the junction.*/
         if (vehicles.size()==0) return true;
         else{

@@ -1,6 +1,5 @@
-/*Yehonatan Hen-207630112
- *Rotem Librati-307903732
- */
+/**Yehonatan Hen-207630112
+ *Rotem Librati-307903732*/
 package components;
 
 import utilities.Point;
@@ -10,7 +9,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Road {
-    //Class implement a road in the map.
+    /**Class implement a road in the map.*/
     private Junction fromJunc;
     private Junction toJunc;
     private ArrayList<VehicleType> allowedVehicles;  // holds the list of vehicle types
@@ -23,7 +22,7 @@ public class Road {
 
 
     public Road(Junction from, Junction to) {
-        /*creates an instance of the
+        /**creates an instance of the
           class and sets the values of allowedVehicles, isOpen and isEnabled
           randomly. Sets the length value to the calculated one*/
         Random rand = new Random();
@@ -123,12 +122,12 @@ public class Road {
     }
 
     public void addVehicleType(VehicleType type) {
-        //Function add new vehicle type to allowed vehicles ArrayList
+        /**Function add new vehicle type to allowed vehicles ArrayList*/
         allowedVehicles.add(type);
     }
 
     public double countLength() {
-        //calculates the length of the road using the coordinates of its junctions
+        /**calculates the length of the road using the coordinates of its junctions*/
         return Math.sqrt(Math.pow(fromJunc.getLocation().getX() - toJunc.getLocation().getX(), 2) +
                 Math.pow(fromJunc.getLocation().getY() - toJunc.getLocation().getY(), 2));
     }

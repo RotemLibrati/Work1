@@ -1,6 +1,5 @@
-/*Yehonatan Hen-207630112
- *Rotem Librati-307903732
- */
+/**Yehonatan Hen-207630112
+ *Rotem Librati-307903732*/
 package components;
 
 import javax.swing.text.Style;
@@ -9,7 +8,7 @@ import java.util.Random;
 import java.util.TooManyListenersException;
 
 public class Vehicle {
-    //Class implements a vehicle
+    /**Class implements a vehicle*/
     private int id;
     private VehicleType type;
     private int speed;  //average speed for this type of vehicle.
@@ -101,7 +100,7 @@ public class Vehicle {
     }
 
     public void move() {
-    /* wait for the current point delay time and move to the next
+    /** wait for the current point delay time and move to the next
     point of the route.*/
         int i = 0;
         while (!lastJunction.equals(currentRoute.getJunctions().get(i)) && !lastJunction.equals(currentRoute.getEnd())) {
@@ -143,14 +142,14 @@ public class Vehicle {
 
 
     public void status() {
-    /*prints the details about the vehicle including current
+    /**prints the details about the vehicle including current
     position, time spent on the route and the first and last junctions on the route*/
         System.out.println(toString() + " Position: " + lastJunction + " current Route: from" + currentRoute.getStart() +
                 " to " + currentRoute.getEnd() + " Time spent:" + String.format("%4f", this.getSpentTime()));
     }
 
     public void checkIn() {
-     /*if arrived to a junction, update the junction waiting list
+     /**if arrived to a junction, update the junction waiting list
       and calculate the delay time before the next move.*/
         lastJunction.getVehicles().add(lastRoad);
         currentRoute.getRoads().add(lastRoad);

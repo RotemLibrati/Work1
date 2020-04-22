@@ -1,6 +1,5 @@
-/*Yehonatan Hen-207630112
- *Rotem Librati-307903732
- */
+/**Yehonatan Hen-207630112
+ *Rotem Librati-307903732*/
 package game;
 import  components.*;
 import utilities.Point;
@@ -10,7 +9,8 @@ import java.util.Random;
 
 
 public class Driving
-    //Implementation of driving the cars into their routes
+        /**Implementation of driving the cars into their routes*/
+
 {
     private int numOfJuncs;
     private int numOfVehicles;
@@ -58,7 +58,7 @@ public class Driving
 
 
     public void addVehicles() {
-        //creates random number (2-8) of vehicles of different types.
+        /**creates random number (2-8) of vehicles of different types.*/
         VehicleType[] arr = {new VehicleType("bus", 60), new VehicleType("motorcycle", 120), new VehicleType("car", 90),
                 new VehicleType("truck", 80), new VehicleType("semitrailer", 80), new VehicleType("bicycle", 40),
                 new VehicleType("tram", 50), new VehicleType("ambulance", 100)};
@@ -83,7 +83,7 @@ public class Driving
     }
 
     public void startDrive(final int maxTime){
-        //Start drive each car by number of times that depends on maxTime variable.
+        /**Start drive each car by number of times that depends on maxTime variable.*/
         for(int i=0;i<maxTime;i++) {
             System.out.println("TURN " + (i + 1));
             for (int j = 0; j < numOfVehicles; j++) {
