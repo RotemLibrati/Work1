@@ -1,5 +1,4 @@
-/**Yehonatan Hen-207630112
- *Rotem Librati-307903732*/
+
 package game;
 import  components.*;
 import utilities.Point;
@@ -7,9 +6,13 @@ import utilities.Point;
 import java.util.ArrayList;
 import java.util.Random;
 
-
+/**
+ * Implementation of driving the cars into their routes
+ *  @version 1.0 22.04.2020
+ *  @author Yehonatan Hen-207630112
+ * @author Rotem Librati-307903732
+ **/
 public class Driving
-        /**Implementation of driving the cars into their routes*/
 
 {
     private int numOfJuncs;
@@ -56,9 +59,10 @@ public class Driving
     }
 
 
-
+    /**
+     * creates random number (2-8) of vehicles of different types.
+     */
     public void addVehicles() {
-        /**creates random number (2-8) of vehicles of different types.*/
         VehicleType[] arr = {new VehicleType("bus", 60), new VehicleType("motorcycle", 120), new VehicleType("car", 90),
                 new VehicleType("truck", 80), new VehicleType("semitrailer", 80), new VehicleType("bicycle", 40),
                 new VehicleType("tram", 50), new VehicleType("ambulance", 100)};
@@ -82,8 +86,12 @@ public class Driving
 
     }
 
+    /**
+     * Start drive each car by number of times that depends on maxTime variable.
+     *
+     * @param maxTime
+     */
     public void startDrive(final int maxTime){
-        /**Start drive each car by number of times that depends on maxTime variable.*/
         for(int i=0;i<maxTime;i++) {
             System.out.println("TURN " + (i + 1));
             for (int j = 0; j < numOfVehicles; j++) {

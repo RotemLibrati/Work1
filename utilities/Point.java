@@ -1,12 +1,14 @@
-/*Yehonatan Hen-207630112
- *Rotem Librati-307903732
- */
+
 package utilities;
 
 import java.util.Random;
-
+/**
+ * Implementation of Point that represented by x and y coordinates
+ *  @version 1.0 22.04.2020
+ *  @author Yehonatan Hen-207630112
+ * @author Rotem Librati-307903732
+ **/
 public class Point {
-    //Implementation of point (x,y)
     double x;
     double y;
 
@@ -58,8 +60,13 @@ public class Point {
         return false;
     }
 
+    /**
+     *
+     * @param min
+     * @param max
+     * @return the randomal double between min and max
+     */
     public static double getRandomDoubleBetweenRange(final double min,final double max){
-        //Function return randomal double between min to max
         double x = (Math.random()*((max-min)+1))+min;
         return x;
     }

@@ -1,5 +1,4 @@
-/**Yehonatan Hen-207630112
- *Rotem Librati-307903732*/
+
 package components;
 
 import java.util.ArrayList;
@@ -8,12 +7,25 @@ import java.util.Random;
 
 import utilities.Point;
 
+/**
+ * Implementation of Junction with entering/exiting roads and other features.
+ *  @version 1.0 22.04.2020
+ *  @author Yehonatan Hen-207630112
+ * @author Rotem Librati-307903732
+ * @see Route
+ * @see Road
+ * @see Vehicle
+ * @see VehicleType
+ **/
 public class Map {
     private ArrayList<Junction> junctions;
     private ArrayList<Road> roads;
 
-
-    public  Map(final int number)/**new constructor that receive number of junctions and connect between them with roads*/
+    /**
+     * new constructor that receive number of junctions and connect between them with roads
+     * @param number
+     */
+    public  Map(final int number)/***/
             //NOTE: This contructor is'nt part of the demanded constructors, However, it is a consequence of Test&Driving class demands
     {
         roads = new ArrayList<>();
@@ -42,9 +54,11 @@ public class Map {
         }
     }
 
+    /**
+     * create a map with 20 random junctions and connect
+     * all of them one to another with roads.
+     */
     public Map() {
-        /** create a map with 20 random junctions and connect
-        all of them one to another with roads.*/
         roads = new ArrayList<>();
         junctions = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
@@ -59,8 +73,13 @@ public class Map {
         }
     }
 
+    /**
+     * Creates a random map with given quantity of junctions and roads.
+     *
+     * @param junctions
+     * @param roads
+     */
     public Map( int junctions, int roads){
-    /**Creates a random map with given quantity of junctions and roads.*/
         this.roads=new ArrayList<>();
         this.junctions=new ArrayList<>();
         for (int i=0;i<junctions;i++){
@@ -75,8 +94,12 @@ public class Map {
         }
     }
 
+    /**
+     * Creates a map with given junctions and connects all of them with roads.
+     *
+     * @param juncs
+     */
     public Map (ArrayList<Junction> juncs) {
-        /**Creates a map with given junctions and connects all of them with roads.*/
         roads = new ArrayList<>();
         junctions = new ArrayList<>();
         junctions.addAll(juncs);
@@ -89,40 +112,63 @@ public class Map {
         }
     }
 
+    /**
+     * Creates a map with given junctions and roads.
+     *
+     * @param juncs
+     * @param roads
+     */
     public Map (ArrayList<Junction>juncs, ArrayList<Road>roads) {
-    /**Creates a map with given junctions and roads.*/
+    /***/
         this.roads=new ArrayList<>();
         junctions=new ArrayList<>();
         junctions.addAll(juncs);
         this.roads.addAll(roads);
     }
 
+    /**
+     * adding new road to the map
+     *
+     * @param r
+     */
     public void addRoad(final Road r){
-        /**adding new road to the map*/
         for (Road road : roads) {
             if (road.equals(r)) return;
         }
         roads.add(r);
     }
 
+    /**
+     * remove exist road from the map
+     *
+     * @param r
+     */
     public void removeRoad(final Road r){
-        /**remove exist road from the map*/
         for (Road road : roads) {
             if (road.equals(r)) return;
         }
         roads.remove(r);
     }
 
+    /**
+     * adding new junction to the map
+     *
+     * @param junc
+     */
     public void addJunction(final Junction junc){
-        /**adding new junction to the map*/
         for (Junction junction: junctions) {
             if (junction.equals(junc)) return;
         }
         junctions.add(junc);
         System.out.println(junc.toString()+" has been added to the map.");
     }
+
+    /**
+     * remove exist junction from the map
+     *
+     * @param junc
+     */
     public void removeJunction(final Junction junc){
-        /**remove exist junction from the map*/
         boolean flag=false;
         for(Junction junction : junctions){
             if(junction.equals(junc)) flag=true;

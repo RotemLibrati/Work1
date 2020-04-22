@@ -1,5 +1,3 @@
-/**Yehonatan Hen-207630112
-*Rotem Librati- 307903732*/
 
 package components;
 import utilities.Point;
@@ -7,8 +5,16 @@ import utilities.Point;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Implementation of Junction with entering/exiting roads and other features.
+ *  @version 1.0 22.04.2020
+ *  @author Yehonatan Hen-207630112
+ * @author Rotem Librati-307903732
+ * @see Route
+ * @see Road
+ * @see Map
+ **/
 public class Junction {
-    /**Implementation of Junction with entering/exiting roads and orher features.*/
     private String junctionName;
     private Point location; // location of the junction on the map
     private ArrayList<Road> enteringRoads;  // holds the list of the roads that enter to the junction.
@@ -58,8 +64,11 @@ public class Junction {
     public void setHasLights(final boolean hasLights){this.hasLights=hasLights;}
     public void setDelay(final double delay){this.delay=delay;}
     public void setVehicles(final ArrayList<Road> vehicles){this.vehicles.addAll(vehicles);}
+
+    /**
+     * function turn lights of junction from OFF mode to ON mode
+     */
     public void setLightsOn()
-            /**function turn lights of junction from OFF mode to ON mode*/
     {
         if (!hasLights) {
             hasLights = true;
@@ -67,9 +76,12 @@ public class Junction {
         System.out.println(this.toString() + ": " + "traffic lights: ON. Delay time: " + delay);
     }
 
+    /**
+     * make the next entering road in the list green (open) and
+     * all the others (exiting only) red (closed).
+     */
     public void changeLights(){
-        /**make the next entering road in the list green (open) and
-        all the others (exiting only) red (closed).*/
+
         int i=0;
         for(;i<enteringRoads.size();i++) {
             if (enteringRoads.get(i).getIsOpen()) {
@@ -88,9 +100,16 @@ public class Junction {
         }
     }
 
+    /**
+     * for vehicle that arrived to the junction from road r, checks if there
+     * are some other vehicles on the roads with a higher traffic priority on the junction.
+     *
+     * @param r
+     *  r is object by type of Road.
+     * @return true if the Road is available for arrived vehicle
+     * else-false.
+     */
     public boolean checkAvailabilty(final Road r){
-        /**for vehicle that arrived to the junction from road r, checks if there
-         are some other vehicles on the roads with a higher traffic priority on the junction.*/
         if (vehicles.size()==0) return true;
         else{
          for(int i=0;i<vehicles.size() && !r.equals(vehicles.get(i));i++){

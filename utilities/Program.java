@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package utilities;
 
 import game.Driving;

@@ -1,5 +1,4 @@
-/**Yehonatan Hen-207630112
- *Rotem Librati-307903732*/
+
 package components;
 
 import utilities.Point;
@@ -8,8 +7,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * Class implement a road in the map.
+ *  @version 1.0 22.04.2020
+ *  @author Yehonatan Hen-207630112
+ * @author Rotem Librati-307903732
+ *
+ * @see Junction
+ * @see Route
+ * @see Map
+ **/
 public class Road {
-    /**Class implement a road in the map.*/
     private Junction fromJunc;
     private Junction toJunc;
     private ArrayList<VehicleType> allowedVehicles;  // holds the list of vehicle types
@@ -20,11 +28,15 @@ public class Road {
     private int maxSpeed;
 
 
-
+    /**
+     * creates an instance of the
+     * class and sets the values of allowedVehicles, isOpen and isEnabled
+     * randomly. Sets the length value to the calculated one
+     *
+     * @param from
+     * @param to
+     */
     public Road(Junction from, Junction to) {
-        /**creates an instance of the
-          class and sets the values of allowedVehicles, isOpen and isEnabled
-          randomly. Sets the length value to the calculated one*/
         Random rand = new Random();
         //Set Vehicle Types array
         VehicleType [] arr = {new VehicleType("bus", 60),new VehicleType("motorcycle", 120),new VehicleType("car", 90),
@@ -47,6 +59,15 @@ public class Road {
         toJunc = to;
     }
 
+    /**
+     * Another Road constructor.
+     *
+     * @param from
+     * @param to
+     * @param allowed
+     * @param open
+     * @param enabled
+     */
     public Road(Junction from, Junction to, ArrayList<VehicleType> allowed,final boolean open,final boolean enabled) {
         allowedVehicles = new ArrayList<VehicleType>();
         allowedVehicles.addAll(allowed);
@@ -121,13 +142,23 @@ public class Road {
         this.maxSpeed = maxSpeed;
     }
 
+    /**
+     * Function add new vehicle type to allowed vehicles ArrayList
+     *
+     * @param type
+     */
     public void addVehicleType(VehicleType type) {
-        /**Function add new vehicle type to allowed vehicles ArrayList*/
         allowedVehicles.add(type);
     }
 
+
+    /**
+     * calculates the length of the road using the coordinates of its junctions
+     *
+     * @return the length of the road.
+     */
     public double countLength() {
-        /**calculates the length of the road using the coordinates of its junctions*/
+
         return Math.sqrt(Math.pow(fromJunc.getLocation().getX() - toJunc.getLocation().getX(), 2) +
                 Math.pow(fromJunc.getLocation().getY() - toJunc.getLocation().getY(), 2));
     }

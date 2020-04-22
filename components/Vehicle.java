@@ -1,5 +1,3 @@
-/**Yehonatan Hen-207630112
- *Rotem Librati-307903732*/
 package components;
 
 import javax.swing.text.Style;
@@ -7,8 +5,21 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.TooManyListenersException;
 
+/**
+ * Class implements a vehicle
+ *
+ *  @version 1.0 22.04.2020
+ *  @author Yehonatan Hen-207630112
+ * @author Rotem Librati-307903732
+ *
+ * @see Junction
+ * @see Route
+ * @see Road
+ * @see VehicleType
+ * @see Map
+ * @see game.Driving
+ **/
 public class Vehicle {
-    /**Class implements a vehicle*/
     private int id;
     private VehicleType type;
     private int speed;  //average speed for this type of vehicle.
@@ -99,9 +110,11 @@ public class Vehicle {
         this.spentTime = spentTime;
     }
 
+    /**
+     * wait for the current point delay time and move to the next
+     * point of the route.
+     */
     public void move() {
-    /** wait for the current point delay time and move to the next
-    point of the route.*/
         int i = 0;
         while (!lastJunction.equals(currentRoute.getJunctions().get(i)) && !lastJunction.equals(currentRoute.getEnd())) {
             i++;
@@ -140,17 +153,21 @@ public class Vehicle {
 
     }
 
-
+    /**
+     * prints the details about the vehicle including current
+     * position, time spent on the route and the first and last junctions on the route
+     */
     public void status() {
-    /**prints the details about the vehicle including current
-    position, time spent on the route and the first and last junctions on the route*/
         System.out.println(toString() + " Position: " + lastJunction + " current Route: from" + currentRoute.getStart() +
                 " to " + currentRoute.getEnd() + " Time spent:" + String.format("%4f", this.getSpentTime()));
     }
 
+    /**
+     * if arrived to a junction, update the junction waiting list
+     * and calculate the delay time before the next move.
+     */
     public void checkIn() {
-     /**if arrived to a junction, update the junction waiting list
-      and calculate the delay time before the next move.*/
+
         lastJunction.getVehicles().add(lastRoad);
         currentRoute.getRoads().add(lastRoad);
         spentTime += currentRoute.calcDelay();
